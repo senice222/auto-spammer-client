@@ -1,0 +1,23 @@
+.instrumentsDiv {
+
+  .list {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1.5rem, 2vw + .6rem, 3.75rem);
+    margin-top: 2.625rem;
+    .item {
+      height: 200px;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #141f2a;
+      width: 25%;
+      p {
+        //text-align: center;
+        font-size: 14px;
+      }
+    }
+  }
+}

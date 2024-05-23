@@ -1,0 +1,29 @@
+.item {
+    //margin-top: 30px;
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .fl3x0V1k {
+    width: 620px;
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+  .img {
+    svg {
+      path, polygon {
+        fill: #2B5278;
+      }
+
+    }
+  }
+}
+
+.divhr {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 2px;
+  background-color: #2B5278;
+}
