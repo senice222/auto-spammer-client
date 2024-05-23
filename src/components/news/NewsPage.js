@@ -3,6 +3,7 @@ import NewsBlock from "./NewsBlock"
 import { useEffect } from "react"
 import GetNews from "../queries/GetNews"
 import { SET_NEWS_LIST } from "../../reducers/types"
+import '../../styles/News.scss'
 
 const NewsPage = () => {
 

@@ -21,3 +21,34 @@
     }
   }
 }
+html[data-theme='dark'] {
+  .item {
+    background-color: #141f2a !important;
+  }
+}
+html[data-theme='light'] {
+  .item {
+    background-color: rgba(231, 231, 231, 0.8) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .list {
+    display: flex;
+    flex-direction: column;
+
+    .item {
+      width: 80vw !important;
+
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .item {
+    height: auto !important;
+  }
+  .instrumentsDiv {
+    width: 90vw !important;
+  }
+}

@@ -1,5 +1,4 @@
 import s from '../../styles/ThirdBlock.module.scss'
-import telegram1 from '../../assets/img/Telegram_1.jpg'
 import {AddUser, Messages, Timer} from "../svgs/Svgs";
 import {motion} from 'framer-motion'
 

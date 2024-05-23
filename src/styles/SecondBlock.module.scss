@@ -6,15 +6,30 @@
     h3 {
       font-size: 25px;
     }
+    @media screen {
+      max-width: 95vw;
+    }
   }
 
   .listOfItems {
     display: flex;
     align-items: flex-start;
     gap: clamp(1.5rem, 2vw + .6rem, 3.75rem);
-    margin-top: 5.625rem;
-
+    //margin-top: 5.625rem;
+    @media (max-width: 1025px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 95vw;
+      min-height: 70px;
+    }
+    @media (max-width: 500px) {
+      .item {
+        width: 75vw !important;
+      }
+    }
     .item {
+      width: 225px;
+      height: 300px;
       p {
         //text-align: justify;
       }
@@ -37,7 +52,9 @@
           width: 84px;
         }
       }
-      width: 25%;
     }
+  }
+  @media (max-width: 1080px) {
+    width: 85vw !important;
   }
 }

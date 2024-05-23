@@ -3,7 +3,7 @@ import background_img from "../../assets/img/background.svg"
 import {useEffect} from "react"
 import FirstTextBlock from "./FirstTextBlock"
 import SecondBlock from "../second_block/SecondBlock";
-import {ThirdBlock} from "../thirdblock/thirdblock";
+import {ThirdBlock} from "../third_block/ThirdBlock";
 import FourthBlock from "../fourth_block/FourthBlock";
 import {motion} from 'framer-motion'
 import {Footer} from "../footer/Footer";

@@ -10,11 +10,13 @@ export const Footer = () => {
                 <img src={logo} alt='' />
                 <h3>TGSPAM</h3>
             </div>
-            <div className="contacts_block">
-                <p className="heading">Служба поддержки</p>
-                <p className="content">Время работы службы поддержки:
-                    <p>Пн-Пт: 09:00 — 18:00</p>
-                </p>
+            <div className={s.contactsBlock}>
+                <div className={s.textB}>
+                    <p className="heading">Служба поддержки</p>
+                    <p className="content">Время работы службы поддержки:
+                        <p>Пн-Пт: 09:00 — 18:00</p>
+                    </p>
+                </div>
                 <div className={s.socialNetworks}>
                     <Link to={'mailto:None@gmail.com'}><GetIcon icon={'mail'} />None@gmail.com</Link>
                     <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>

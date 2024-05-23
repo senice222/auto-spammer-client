@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import GetIcon from "../../assets/GetIcon"
+import '../../styles/Contacts.scss'
 
 const ContactsPage = () => {
 

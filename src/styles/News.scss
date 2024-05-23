@@ -1,0 +1,10 @@
+
+@media (max-width: 700px) {
+  .blocks {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .news_container {
+    width: 90vw !important;
+  }
+}
