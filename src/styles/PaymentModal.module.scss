@@ -1,0 +1,33 @@
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 90%;
+  padding-bottom: 3px;
+}
+.error {
+  color: #FF4C4C;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.loading {
+  position: absolute;
+  top: 60%;
+  width: 40px;
+  height: 40px;
+  transition: .1s;
+  animation: 1s linear infinite loading;
+}
+.icon {
+  display: flex;
+  justify-content: center;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
