@@ -8,6 +8,24 @@ html[data-theme='light'] {
   $color6: black;
   $color7: #2F2F2F;
   $color8: #ADACCB;
+
+  .svgg {
+    overflow: hidden;
+    position: absolute;
+    margin-top: 22px;
+    font-size: 1rem !important;
+    margin-left: -6px;
+    width: auto;
+    height: auto;
+
+    g {
+      path {
+        fill: $color5;
+      }
+    }
+  }
+
+
   .info_block {
     background-color: $color2;
     display: flex;
@@ -272,10 +290,12 @@ html[data-theme='light'] {
 
   .container {
     font-family: 'Montserrat-Medium';
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    padding: 0 2em;
+    //display: grid;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    //padding: 0 2em;
 
     .main_container {
       position: relative;
@@ -1178,11 +1198,12 @@ html[data-theme='light'] {
   @media screen and (max-width: 1000px) {
 
     .messages_container,
-    .panel_container,
     .header {
       width: 100%;
     }
-
+    .panel_container {
+      width: 90%;
+    }
 
     .tel_info {
       grid-template-columns: 1fr 1fr 1fr !important;
@@ -1452,6 +1473,11 @@ html[data-theme='light'] {
   }
 }
 
+.svgDiv {
+  position: relative;
+  //margin-left: -20px;
+}
+
 html[data-theme='dark'] {
   $color1: #0E1621;
   $color2: #17212B;
@@ -1462,17 +1488,19 @@ html[data-theme='dark'] {
   $color7: #d0d0df;
   $color8: #52CB5F;
 
+
   .svgg {
     overflow: hidden;
     position: absolute;
-    margin-top: 20px;
+    margin-top: 22px;
     font-size: 1rem !important;
+    margin-left: -6px;
     width: auto;
     height: auto;
 
     g {
       path {
-        fill: #293A4C;
+        fill: $color5;
       }
     }
   }
@@ -1738,10 +1766,11 @@ html[data-theme='dark'] {
 
   .container {
     font-family: 'Montserrat-Medium';
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    padding: 0 2em;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    //padding: 0 2em;
 
     .main_container {
       position: relative;
@@ -2646,11 +2675,12 @@ html[data-theme='dark'] {
   @media screen and (max-width: 1000px) {
 
     .messages_container,
-    .panel_container,
     .header {
       width: 100%;
     }
-
+    .panel_container {
+      width: 90%;
+    }
 
     .tel_info {
       grid-template-columns: 1fr 1fr 1fr !important;
@@ -3005,8 +3035,23 @@ hr {
     height: auto !important;
     min-height: 120px;
   }
+  .burger {
+    .logoBurger {
+      display: flex;
+    }
+    a {
+      letter-spacing: 2px;
+    }
+  }
   .number {
     margin-left: 10px !important;
+  }
+  .news_item_block {
+    max-width: 90vw;
+    img {
+      width: 90% !important;
+      height: auto !important;
+    }
   }
 }
 @media (max-width: 400px) {
@@ -3015,4 +3060,10 @@ hr {
     height: 50px !important;
   }
 }
-
+.logoBurger {
+  display: none;
+  justify-content: center;
+  h3 {
+    font-size: 36px !important;
+  }
+}

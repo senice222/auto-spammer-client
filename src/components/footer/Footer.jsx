@@ -18,7 +18,10 @@ export const Footer = () => {
                     </p>
                 </div>
                 <div className={s.socialNetworks}>
-                    <Link to={'mailto:None@gmail.com'}><GetIcon icon={'mail'} />None@gmail.com</Link>
+                    <Link to={'mailto:None@gmail.com'}>
+                        <GetIcon icon={'mail'} />
+                        <p>None@gmail.com</p>
+                    </Link>
                     <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>
                     <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>
                 </div>

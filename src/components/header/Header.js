@@ -38,6 +38,7 @@ const Header = () => {
                 <div className={'line' + (switchMenu ? ' active' : '')}></div>
             </div>
             <div className={'menu' + (switchMenu ? ' active_menu burger' : '')}>
+                <div className={'logoBurger'}><LogoBlock/></div>
                 <MenuItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu}/>
 
                 <AccountItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} user_data={user_data}/>
