@@ -1011,7 +1011,8 @@ html[data-theme='light'] {
     }
 
     .messages_container {
-      width: 960px;
+      width: 100%;
+      max-width: 960px;
 
 
       .block_messages {
@@ -1196,8 +1197,10 @@ html[data-theme='light'] {
   }
 
   @media screen and (max-width: 1000px) {
+    .messages_container {
+      width: 90% !important;
+    }
 
-    .messages_container,
     .header {
       width: 100%;
     }
@@ -2487,7 +2490,7 @@ html[data-theme='dark'] {
 
     .messages_container {
       width: 100%;
-
+      max-width: 960px;
 
       .block_messages {
 
@@ -2664,7 +2667,6 @@ html[data-theme='dark'] {
 
   @media screen and (max-width: 1000px) {
 
-    .messages_container,
     .panel_container,
     .header {
       width: 720px;
@@ -2673,8 +2675,10 @@ html[data-theme='dark'] {
   }
 
   @media screen and (max-width: 1000px) {
+    .messages_container {
+      width: 90% !important;
+    }
 
-    .messages_container,
     .header {
       width: 100%;
     }
