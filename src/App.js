@@ -24,7 +24,7 @@ function App() {
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
             setTheme(prefersDarkScheme ? 'dark' : 'light');
         }
-    }, []);
+    }, [setTheme]);
 
     return (
         <HashRouter>
