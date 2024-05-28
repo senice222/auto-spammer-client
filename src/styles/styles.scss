@@ -89,6 +89,7 @@ html[data-theme='light'] {
   }
 
   .textBlockk {
+    overflow: hidden;
     font-size: 16px;
     background-color: $color5;
     padding: 5px 10px;
@@ -1047,7 +1048,8 @@ html[data-theme='light'] {
             box-sizing: border-box;
 
             p {
-              margin: 0
+              margin: 0;
+              word-break: break-word;
             }
           }
 
@@ -1478,6 +1480,9 @@ html[data-theme='light'] {
 
 .svgDiv {
   position: relative;
+  // height:100%;
+  display: flex;
+  align-items: flex-end;
   //margin-left: -20px;
 }
 
@@ -1494,13 +1499,13 @@ html[data-theme='dark'] {
 
   .svgg {
     overflow: hidden;
-    position: absolute;
-    margin-top: 22px;
     font-size: 1rem !important;
-    margin-left: -6px;
+    margin-left: -1px;
+    margin-top: 19px;
     width: auto;
     height: auto;
-
+    position: relative;
+  
     g {
       path {
         fill: $color5;
@@ -1571,6 +1576,7 @@ html[data-theme='dark'] {
   }
 
   .textBlockk {
+    overflow: hidden;
     font-size: 16px;
     background-color: $color5;
     padding: 5px 10px;
@@ -2498,7 +2504,7 @@ html[data-theme='dark'] {
           background-color: $color2;
           margin: 2em 0;
           padding: 1em 2em;
-          width: 90%;
+          width: 84%;
           border-radius: 5px;
 
           .title_block {
@@ -2526,7 +2532,8 @@ html[data-theme='dark'] {
             box-sizing: border-box;
 
             p {
-              margin: 0
+              margin: 0;
+              word-break: break-word;
             }
           }
 
