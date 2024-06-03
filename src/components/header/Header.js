@@ -31,7 +31,7 @@ const Header = () => {
     return isLoading
         ? <Loading width={20}/>
         : <div className="header">
-            <LogoBlock/>
+            <LogoBlock />
             <div className='open_menu' onClick={() => setSwitchMenu(!switchMenu)}>
                 <div className={'line' + (switchMenu ? ' active' : '')}></div>
                 <div className={'line' + (switchMenu ? ' active' : '')}></div>

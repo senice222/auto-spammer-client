@@ -1,3 +1,4 @@
+@import "../styles/styles";
 .footer {
   background-color: #17212B;
   width: 100vw;
@@ -40,6 +41,18 @@ html[data-theme='dark'] {
 html[data-theme='light'] {
   .footer {
     background-color: rgba(231, 231, 231, 0.8) !important;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  a {
+    margin-top: 10px;
+    transition: .1s;
+  }
+  a:hover {
+    color: #ababab !important
   }
 }
 

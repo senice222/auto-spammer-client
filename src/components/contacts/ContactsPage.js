@@ -4,7 +4,7 @@ import '../../styles/Contacts.scss'
 
 const ContactsPage = () => {
 
-    return <div>
+    return <div >
         <p className="page_heading">Контакты</p>
         <div className="contacts_container">
             <div className="intro_block">
@@ -20,6 +20,7 @@ const ContactsPage = () => {
                 </p>
                 <div className="social_networks">
                     <Link to={'mailto:None@gmail.com'}><GetIcon icon={'mail'} />None@gmail.com</Link>
+                    <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>
                     <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>
                     <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>
                 </div>

@@ -7,7 +7,7 @@ export const Footer = () => {
     return (
         <div className={s.footer}>
             <div className={s.logoItems}>
-                <img src={logo} alt='' />
+                <img src={logo} alt=''/>
                 <h3>TGSPAM</h3>
             </div>
             <div className={s.contactsBlock}>
@@ -16,14 +16,18 @@ export const Footer = () => {
                     <p className="content">Время работы службы поддержки:
                         <p>Пн-Пт: 09:00 — 18:00</p>
                     </p>
+                    <div className={s.links}>
+                        <Link className='item' to={'/agreement-policy'}>Политика соглашений</Link>
+                        <Link className='item' to={'/privacy-policy'}>Политика Конфиденциальности</Link>
+                    </div>
                 </div>
                 <div className={s.socialNetworks}>
                     <Link to={'mailto:None@gmail.com'}>
-                        <GetIcon icon={'mail'} />
+                        <GetIcon icon={'mail'}/>
                         <p>None@gmail.com</p>
                     </Link>
-                    <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>
-                    <Link to={'https://t.me/None'}><GetIcon icon={'tg'} />@None</Link>
+                    <Link to={'https://t.me/None'}><GetIcon icon={'tg'}/>@None</Link>
+                    <Link to={'https://t.me/None'}><GetIcon icon={'tg'}/>@None</Link>
                 </div>
             </div>
         </div>

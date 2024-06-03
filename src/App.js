@@ -14,6 +14,8 @@ import ContactsPage from './components/contacts/ContactsPage';
 import NewsItemPage from './components/news/NewsItemPage';
 import {useTheme} from "./hooks/useTheme";
 import {useEffect} from "react";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
+import AgreementPolicy from "./pages/AgreementPolicy/AgreementPolicy";
 
 function App() {
     const status_window = useSelector(w => w.app.window_data.status)
@@ -38,6 +40,8 @@ function App() {
                     <Route path="/news/:id" element={<NewsItemPage/>}/>
                     <Route path="/news" element={<NewsPage/>}/>
                     <Route path="/contacts" element={<ContactsPage/>}/>
+                    <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+                    <Route path="/agreement-policy" element={<AgreementPolicy/>}/>
                     <Route path="/signup" element={<SignUp/>}/>
                     <Route path="/signin" element={<SignIn/>}/>
                     <Route path="/panel" element={<PanelPage/>}/>
