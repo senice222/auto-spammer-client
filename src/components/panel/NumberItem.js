@@ -11,7 +11,7 @@ const NumberItem = () => {
 
     return <div className='number_item'>
         <NumberInfo />
-        <Expiration time_sub={number_data.time_sub}/>
+        {/* <Expiration time_sub={number_data.time_sub}/> */}
         <ControlBlock status={number_data.status}/>
         <Blocks number_data={number_data} />
     </div>

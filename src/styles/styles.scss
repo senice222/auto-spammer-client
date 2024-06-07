@@ -1,13 +1,27 @@
-html[data-theme='light'] {
-  $color1: #F1F1F1;
-  $color2: #EDEDED;
-  $color3: #AFCBE7;
-  $color4: #E1A7B6;
-  $color5: #E4E9F0;
-  $color6: black;
-  $color7: #2F2F2F;
-  $color8: #ADACCB;
+@keyframes ant-notification-notice-wrapper {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.ant-notification-notice-wrapper {
+  animation: fadeout 1.7s forwards !important;
+  div {
+    border-radius: 5px;
+  }
+}
 
+html[data-theme="light"] {
+  $color1: #f1f1f1;
+  $color2: #ededed;
+  $color3: #afcbe7;
+  $color4: #e1a7b6;
+  $color5: #e4e9f0;
+  $color6: black;
+  $color7: #2f2f2f;
+  $color8: #adaccb;
 
   .methods1 {
     div {
@@ -21,20 +35,9 @@ html[data-theme='light'] {
     }
   }
 
-  //@keyframes ant-notification-notice-wrapper {
-  //  0% {
-  //    opacity: 1;
-  //  }
-  //  100% {
-  //    opacity: 0;
-  //  }
-  //}
-  //.ant-notification-notice-wrapper {
-  //  animation: fadeout 1.2s forwards !important;
-  //}
-  .ant-notification-notice-wrapper {
-    background: black !important;
-  }
+  // .ant-notification-notice-wrapper {
+  //   background: black !important;
+  // }
 
   @keyframes fadeout {
     0% {
@@ -70,7 +73,6 @@ html[data-theme='light'] {
       }
     }
   }
-
 
   .info_block {
     background-color: $color2;
@@ -154,7 +156,6 @@ html[data-theme='light'] {
     resize: vertical;
   }
 
-
   @mixin block_panel {
     display: flex;
     justify-content: space-between;
@@ -165,7 +166,7 @@ html[data-theme='light'] {
     margin-top: 1em;
 
     h2 {
-      margin: 0
+      margin: 0;
     }
   }
 
@@ -178,7 +179,7 @@ html[data-theme='light'] {
     border-radius: 4px;
     background-color: $col;
     color: $color7;
-    transition: .1s;
+    transition: 0.1s;
     cursor: pointer;
     -youbkit-touch-callout: none;
     -youbkit-user-select: none;
@@ -187,7 +188,7 @@ html[data-theme='light'] {
     user-select: none;
 
     &:hover {
-      opacity: .7
+      opacity: 0.7;
     }
   }
 
@@ -205,12 +206,11 @@ html[data-theme='light'] {
     font-family: "Montserrat-Medium";
     font-size: 16px;
     outline: none;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     border: 0px solid $color1;
     border-radius: 5px;
     box-sizing: border-box;
   }
-
 
   html,
   body {
@@ -221,7 +221,7 @@ html[data-theme='light'] {
 
   a {
     text-decoration: none;
-    color: $color6
+    color: $color6;
   }
 
   p,
@@ -231,9 +231,8 @@ html[data-theme='light'] {
   h3,
   h4,
   h5 {
-    color: $color6
+    color: $color6;
   }
-
 
   body::-webkit-scrollbar {
     width: 7px;
@@ -250,27 +249,26 @@ html[data-theme='light'] {
     margin: 0;
   }
 
-  input[type=number] {
-    -moz-appearance: textfield
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 
   .on_color {
-    color: $color8
+    color: $color8;
   }
 
   .off_color {
-    color: $color4
+    color: $color4;
   }
 
   .circle {
-    padding: .4em;
-    border-radius: .5em;
+    padding: 0.4em;
+    border-radius: 0.5em;
   }
 
   .page_heading {
     font-size: 24px;
   }
-
 
   .back_func {
     display: flex;
@@ -279,7 +277,7 @@ html[data-theme='light'] {
     cursor: pointer;
 
     &:hover {
-      opacity: .7;
+      opacity: 0.7;
     }
 
     img {
@@ -287,7 +285,7 @@ html[data-theme='light'] {
     }
 
     p {
-      margin: 0
+      margin: 0;
     }
   }
 
@@ -296,7 +294,7 @@ html[data-theme='light'] {
     top: 50%;
     width: 100px;
     height: 100px;
-    transition: .1s;
+    transition: 0.1s;
     animation: 1s linear infinite loading;
   }
 
@@ -307,7 +305,7 @@ html[data-theme='light'] {
 
   .react-tel-input .selected-flag {
     &:hover {
-      background-color: $color5 !important
+      background-color: $color5 !important;
     }
   }
 
@@ -340,7 +338,7 @@ html[data-theme='light'] {
   }
 
   .container {
-    font-family: 'Montserrat-Medium';
+    font-family: "Montserrat-Medium";
     //display: grid;
     display: flex;
     width: 100vw;
@@ -408,7 +406,7 @@ html[data-theme='light'] {
       .open_menu {
         position: fixed;
         display: grid;
-        top: .6em;
+        top: 0.6em;
         right: 1em;
         width: 40px;
         height: 40px;
@@ -417,7 +415,7 @@ html[data-theme='light'] {
         opacity: 0;
         justify-content: center;
         align-content: center;
-        gap: .4em;
+        gap: 0.4em;
         cursor: pointer;
         z-index: 900;
 
@@ -425,27 +423,27 @@ html[data-theme='light'] {
           width: 25px;
           height: 3px;
           background-color: $color7;
-          transition: .1s;
+          transition: 0.1s;
         }
       }
 
       .active:nth-child(1) {
-        transform: translateY(10px) rotate(-45deg)
+        transform: translateY(10px) rotate(-45deg);
       }
 
       .active:nth-child(2) {
-        opacity: 0
+        opacity: 0;
       }
 
       .active:nth-child(3) {
-        transform: translateY(-9px) rotate(45deg)
+        transform: translateY(-9px) rotate(45deg);
       }
 
       .menu {
         display: flex;
         flex: 1;
         justify-content: space-between;
-        transition: .1s;
+        transition: 0.1s;
         overflow-x: hidden;
       }
 
@@ -454,7 +452,6 @@ html[data-theme='light'] {
       }
 
       .w-menu {
-
         padding: 20px;
       }
 
@@ -464,7 +461,7 @@ html[data-theme='light'] {
         height: 100%;
 
         .item {
-          @include but($color3)
+          @include but($color3);
         }
 
         .signin {
@@ -490,7 +487,7 @@ html[data-theme='light'] {
       }
 
       .item:hover {
-        opacity: .7
+        opacity: 0.7;
       }
     }
 
@@ -513,7 +510,7 @@ html[data-theme='light'] {
         }
 
         h2 {
-          margin-bottom: 0
+          margin-bottom: 0;
         }
 
         h5 {
@@ -527,7 +524,7 @@ html[data-theme='light'] {
         }
 
         label {
-          margin: 1em 0 .5em 0;
+          margin: 1em 0 0.5em 0;
         }
 
         .control_block {
@@ -564,7 +561,6 @@ html[data-theme='light'] {
             img {
               width: 20px;
             }
-
           }
         }
       }
@@ -584,7 +580,7 @@ html[data-theme='light'] {
           display: flex;
           align-items: center;
           gap: 1em;
-          padding: .5em 1em;
+          padding: 0.5em 1em;
           width: fit-content;
           border-radius: 5px;
           color: $color6;
@@ -599,7 +595,7 @@ html[data-theme='light'] {
             user-select: none;
 
             &:hover {
-              opacity: .7;
+              opacity: 0.7;
             }
           }
 
@@ -609,7 +605,7 @@ html[data-theme='light'] {
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            cursor: pointer
+            cursor: pointer;
           }
         }
       }
@@ -627,7 +623,7 @@ html[data-theme='light'] {
             @include but($color5);
             display: grid;
             font-size: 14px;
-            padding: .5em 1em;
+            padding: 0.5em 1em;
             align-items: center;
 
             svg {
@@ -685,13 +681,13 @@ html[data-theme='light'] {
 
               .title {
                 font-size: 12px;
-
               }
             }
           }
 
           .tel {
             display: flex;
+            align-items: center;
             gap: 0.5em;
 
             p {
@@ -707,11 +703,11 @@ html[data-theme='light'] {
             grid-column: 1/3;
 
             .switch_but {
-              @include but($color4)
+              @include but($color4);
             }
 
             .spam_block {
-              @include but($color3)
+              @include but($color3);
             }
 
             .delete_but {
@@ -724,17 +720,17 @@ html[data-theme='light'] {
 
           .expiration {
             display: grid;
-            gap: .5em;
+            gap: 0.5em;
             flex-wrap: wrap;
             justify-content: end;
 
             p {
-              margin: 0
+              margin: 0;
             }
 
             .time_param {
               display: flex;
-              gap: .5em;
+              gap: 0.5em;
             }
 
             .ex_title {
@@ -766,7 +762,7 @@ html[data-theme='light'] {
               border-radius: 5px;
               text-align: center;
               cursor: pointer;
-              transition: .2s;
+              transition: 0.2s;
               align-items: center;
               -youbkit-touch-callout: none;
               -youbkit-user-select: none;
@@ -789,7 +785,7 @@ html[data-theme='light'] {
                 font-size: 12px;
                 margin: 0;
                 display: flex;
-                gap: .5em;
+                gap: 0.5em;
                 align-items: center;
                 color: $color7;
               }
@@ -804,11 +800,11 @@ html[data-theme='light'] {
         padding: 1em;
 
         &_text {
-          font-size: 24px
+          font-size: 24px;
         }
 
         .add_number_but {
-          @include but($color5)
+          @include but($color5);
         }
       }
     }
@@ -846,7 +842,7 @@ html[data-theme='light'] {
         }
 
         h4 {
-          margin: 0
+          margin: 0;
         }
 
         .spliter {
@@ -879,12 +875,12 @@ html[data-theme='light'] {
 
           p {
             margin: 0;
-            padding: .5em 1em;
+            padding: 0.5em 1em;
             background-color: $color5;
             box-shadow: 0 0 10px -3px $color1;
             margin-bottom: 5px;
             cursor: pointer;
-            transition: .2s;
+            transition: 0.2s;
             font-size: 14px;
             height: fit-content;
 
@@ -909,13 +905,12 @@ html[data-theme='light'] {
             resize: vertical;
             width: 100%;
             font-size: 14px;
-            padding: .5em;
-            margin: .5em 0;
+            padding: 0.5em;
+            margin: 0.5em 0;
           }
 
           span {
             color: $color6;
-
           }
         }
 
@@ -926,11 +921,10 @@ html[data-theme='light'] {
           input {
             @include default_input();
             width: 100%;
-
           }
 
           .error_block {
-            color: $color4
+            color: $color4;
           }
         }
 
@@ -946,12 +940,12 @@ html[data-theme='light'] {
           .interval_values {
             display: flex;
             align-items: center;
-            gap: .5em;
+            gap: 0.5em;
 
             .interval_values_random {
               display: flex;
               align-items: center;
-              gap: .5em
+              gap: 0.5em;
             }
           }
 
@@ -966,14 +960,14 @@ html[data-theme='light'] {
           .text_input_random {
             @include default_input();
             width: 30%;
-            padding: .5em;
+            padding: 0.5em;
             font-size: 20px;
             font-weight: bold;
             text-align: center;
           }
 
           .after_text {
-            width: 50px
+            width: 50px;
           }
 
           .save_but {
@@ -1000,7 +994,6 @@ html[data-theme='light'] {
         .no_money_window {
           height: fit-content;
         }
-
       }
 
       .window_add_account {
@@ -1024,7 +1017,7 @@ html[data-theme='light'] {
           }
 
           .disabled_but {
-            opacity: .7
+            opacity: 0.7;
           }
         }
       }
@@ -1052,9 +1045,9 @@ html[data-theme='light'] {
             background-color: $color5;
             border-radius: 5px;
             box-shadow: 0 0 10px -3px $color5;
-            padding: .5em 1em;
+            padding: 0.5em 1em;
             cursor: pointer;
-            transition: .1s;
+            transition: 0.1s;
 
             &:hover {
               box-shadow: 0 0 10px -1px $color5;
@@ -1072,7 +1065,6 @@ html[data-theme='light'] {
     .messages_container {
       width: 100%;
       max-width: 960px;
-
 
       .block_messages {
         &_item {
@@ -1144,7 +1136,7 @@ html[data-theme='light'] {
           box-sizing: border-box;
           box-shadow: 0 0 10px -5px $color2;
           cursor: pointer;
-          transition: .1s;
+          transition: 0.1s;
           text-align: justify;
 
           h2 {
@@ -1230,7 +1222,7 @@ html[data-theme='light'] {
 
           a {
             display: flex;
-            gap: .5em;
+            gap: 0.5em;
             align-items: center;
           }
         }
@@ -1240,21 +1232,19 @@ html[data-theme='light'] {
 
   @keyframes loading {
     0% {
-      transform: rotate(0deg)
+      transform: rotate(0deg);
     }
 
     100% {
-      transform: rotate(360deg)
+      transform: rotate(360deg);
     }
   }
 
   @media screen and (max-width: 1000px) {
-
     .messages_container,
     .panel_container,
     .header {
       width: 720px;
-
     }
   }
 
@@ -1383,12 +1373,11 @@ html[data-theme='light'] {
     .spam_block {
       grid-column: 1/3;
     }
-
   }
 
   @media screen and (max-width: 450px) {
     .panel_title {
-      font-size: 24px
+      font-size: 24px;
     }
 
     .sign_block {
@@ -1399,25 +1388,25 @@ html[data-theme='light'] {
 
     .userinfo {
       h2 {
-        font-size: 20px
+        font-size: 20px;
       }
 
       .balance {
-        gap: .5em !important;
-        font-size: 14px
+        gap: 0.5em !important;
+        font-size: 14px;
       }
 
       svg {
-        width: 15px !important
+        width: 15px !important;
       }
     }
 
     .numbers {
-      padding-top: .5em;
+      padding-top: 0.5em;
 
       h3 {
         font-size: 16px;
-        margin: .5em 0;
+        margin: 0.5em 0;
       }
     }
 
@@ -1437,34 +1426,32 @@ html[data-theme='light'] {
     .info_group {
       .tel {
         h2 {
-          font-size: 18px
+          font-size: 18px;
         }
 
         p {
-          font-size: 10px !important
+          font-size: 10px !important;
         }
       }
 
       .extra_info {
         p {
-          font-size: 14px
+          font-size: 14px;
         }
 
         .title {
-          font-size: 10px !important
+          font-size: 10px !important;
         }
       }
 
       .expiration {
         .ex_title {
-          font-size: 10px !important
+          font-size: 10px !important;
         }
       }
     }
 
     .container {
-
-
       .messages_container {
         h1 {
           font-size: 24px;
@@ -1495,16 +1482,13 @@ html[data-theme='light'] {
   }
 
   @media screen and (max-width: 375px) {
-
-
     .numbers {
-      padding: .5em 0 !important;
+      padding: 0.5em 0 !important;
     }
 
     .sign_block {
       width: 90vw !important;
     }
-
   }
 
   @media screen and (max-width: 350px) {
@@ -1517,7 +1501,6 @@ html[data-theme='light'] {
     }
 
     .block_messages {
-
       &_item {
         padding: 1em !important;
 
@@ -1533,8 +1516,8 @@ html[data-theme='light'] {
   }
 
   hr {
-    background-color: #2B5278;
-    color: #2B5278;
+    background-color: #2b5278;
+    color: #2b5278;
   }
 }
 
@@ -1544,15 +1527,15 @@ html[data-theme='light'] {
   align-items: flex-end;
 }
 
-html[data-theme='dark'] {
-  $color1: #0E1621;
-  $color2: #17212B;
-  $color3: #2B5278;
-  $color4: #985B72;
-  $color5: #293A4C;
-  $color6: #7F91A4;
+html[data-theme="dark"] {
+  $color1: #0e1621;
+  $color2: #17212b;
+  $color3: #2b5278;
+  $color4: #985b72;
+  $color5: #293a4c;
+  $color6: #7f91a4;
   $color7: #d0d0df;
-  $color8: #52CB5F;
+  $color8: #52cb5f;
 
   .divtextt {
     display: grid;
@@ -1578,7 +1561,6 @@ html[data-theme='dark'] {
     svg {
       path {
         fill: $color6 !important;
-
       }
     }
   }
@@ -1586,7 +1568,6 @@ html[data-theme='dark'] {
   .fadeout {
     animation: fadeout 1.2s forwards !important;
   }
-
 
   .svggg {
     path {
@@ -1701,7 +1682,7 @@ html[data-theme='dark'] {
     margin-top: 1em;
 
     h2 {
-      margin: 0
+      margin: 0;
     }
   }
 
@@ -1714,7 +1695,7 @@ html[data-theme='dark'] {
     border-radius: 4px;
     background-color: $col;
     color: $color7;
-    transition: .1s;
+    transition: 0.1s;
     cursor: pointer;
     -youbkit-touch-callout: none;
     -youbkit-user-select: none;
@@ -1723,7 +1704,7 @@ html[data-theme='dark'] {
     user-select: none;
 
     &:hover {
-      opacity: .7
+      opacity: 0.7;
     }
   }
 
@@ -1741,12 +1722,11 @@ html[data-theme='dark'] {
     font-family: "Montserrat-Medium";
     font-size: 16px;
     outline: none;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     border: 0px solid $color1;
     border-radius: 5px;
     box-sizing: border-box;
   }
-
 
   html,
   body {
@@ -1757,7 +1737,7 @@ html[data-theme='dark'] {
 
   a {
     text-decoration: none;
-    color: $color6
+    color: $color6;
   }
 
   p,
@@ -1767,9 +1747,8 @@ html[data-theme='dark'] {
   h3,
   h4,
   h5 {
-    color: $color6
+    color: $color6;
   }
-
 
   body::-webkit-scrollbar {
     width: 7px;
@@ -1786,27 +1765,26 @@ html[data-theme='dark'] {
     margin: 0;
   }
 
-  input[type=number] {
-    -moz-appearance: textfield
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 
   .on_color {
-    color: $color8
+    color: $color8;
   }
 
   .off_color {
-    color: $color4
+    color: $color4;
   }
 
   .circle {
-    padding: .4em;
-    border-radius: .5em;
+    padding: 0.4em;
+    border-radius: 0.5em;
   }
 
   .page_heading {
     font-size: 24px;
   }
-
 
   .back_func {
     display: flex;
@@ -1815,7 +1793,7 @@ html[data-theme='dark'] {
     cursor: pointer;
 
     &:hover {
-      opacity: .7;
+      opacity: 0.7;
     }
 
     img {
@@ -1823,7 +1801,7 @@ html[data-theme='dark'] {
     }
 
     p {
-      margin: 0
+      margin: 0;
     }
   }
 
@@ -1832,7 +1810,7 @@ html[data-theme='dark'] {
     top: 50%;
     width: 100px;
     height: 100px;
-    transition: .1s;
+    transition: 0.1s;
     animation: 1s linear infinite loading;
   }
 
@@ -1843,7 +1821,7 @@ html[data-theme='dark'] {
 
   .react-tel-input .selected-flag {
     &:hover {
-      background-color: $color5 !important
+      background-color: $color5 !important;
     }
   }
 
@@ -1896,7 +1874,7 @@ html[data-theme='dark'] {
   }
 
   .container {
-    font-family: 'Montserrat-Medium';
+    font-family: "Montserrat-Medium";
     display: flex;
     width: 100vw;
     flex-direction: column;
@@ -1908,7 +1886,6 @@ html[data-theme='dark'] {
       display: grid;
       max-width: 1000px;
     }
-
 
     .main_container {
       position: relative;
@@ -1963,7 +1940,7 @@ html[data-theme='dark'] {
       .open_menu {
         position: fixed;
         display: grid;
-        top: .6em;
+        top: 0.6em;
         right: 1em;
         width: 40px;
         height: 40px;
@@ -1972,7 +1949,7 @@ html[data-theme='dark'] {
         opacity: 0;
         justify-content: center;
         align-content: center;
-        gap: .4em;
+        gap: 0.4em;
         cursor: pointer;
         z-index: 900;
 
@@ -1980,27 +1957,27 @@ html[data-theme='dark'] {
           width: 25px;
           height: 3px;
           background-color: $color7;
-          transition: .1s;
+          transition: 0.1s;
         }
       }
 
       .active:nth-child(1) {
-        transform: translateY(10px) rotate(-45deg)
+        transform: translateY(10px) rotate(-45deg);
       }
 
       .active:nth-child(2) {
-        opacity: 0
+        opacity: 0;
       }
 
       .active:nth-child(3) {
-        transform: translateY(-9px) rotate(45deg)
+        transform: translateY(-9px) rotate(45deg);
       }
 
       .menu {
         display: flex;
         flex: 1;
         justify-content: space-between;
-        transition: .1s;
+        transition: 0.1s;
         overflow-x: hidden;
       }
 
@@ -2009,7 +1986,6 @@ html[data-theme='dark'] {
       }
 
       .w-menu {
-
         padding: 20px;
       }
 
@@ -2019,7 +1995,7 @@ html[data-theme='dark'] {
         height: 100%;
 
         .item {
-          @include but($color3)
+          @include but($color3);
         }
 
         .signin {
@@ -2045,7 +2021,7 @@ html[data-theme='dark'] {
       }
 
       .item:hover {
-        opacity: .7
+        opacity: 0.7;
       }
     }
 
@@ -2068,7 +2044,7 @@ html[data-theme='dark'] {
         }
 
         h2 {
-          margin-bottom: 0
+          margin-bottom: 0;
         }
 
         h5 {
@@ -2082,7 +2058,7 @@ html[data-theme='dark'] {
         }
 
         label {
-          margin: 1em 0 .5em 0;
+          margin: 1em 0 0.5em 0;
         }
 
         .control_block {
@@ -2119,7 +2095,6 @@ html[data-theme='dark'] {
             img {
               width: 20px;
             }
-
           }
         }
       }
@@ -2139,7 +2114,7 @@ html[data-theme='dark'] {
           display: flex;
           align-items: center;
           gap: 1em;
-          padding: .5em 1em;
+          padding: 0.5em 1em;
           width: fit-content;
           border-radius: 5px;
           color: $color6;
@@ -2154,7 +2129,7 @@ html[data-theme='dark'] {
             user-select: none;
 
             &:hover {
-              opacity: .7;
+              opacity: 0.7;
             }
           }
 
@@ -2164,7 +2139,7 @@ html[data-theme='dark'] {
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            cursor: pointer
+            cursor: pointer;
           }
         }
       }
@@ -2182,7 +2157,7 @@ html[data-theme='dark'] {
             @include but($color5);
             display: grid;
             font-size: 14px;
-            padding: .5em 1em;
+            padding: 0.5em 1em;
             align-items: center;
 
             svg {
@@ -2240,13 +2215,13 @@ html[data-theme='dark'] {
 
               .title {
                 font-size: 12px;
-
               }
             }
           }
 
           .tel {
             display: flex;
+            align-items: center;
             gap: 0.5em;
 
             p {
@@ -2262,11 +2237,11 @@ html[data-theme='dark'] {
             grid-column: 1/3;
 
             .switch_but {
-              @include but($color4)
+              @include but($color4);
             }
 
             .spam_block {
-              @include but($color3)
+              @include but($color3);
             }
 
             .delete_but {
@@ -2279,17 +2254,17 @@ html[data-theme='dark'] {
 
           .expiration {
             display: grid;
-            gap: .5em;
+            gap: 0.5em;
             flex-wrap: wrap;
             justify-content: end;
 
             p {
-              margin: 0
+              margin: 0;
             }
 
             .time_param {
               display: flex;
-              gap: .5em;
+              gap: 0.5em;
             }
 
             .ex_title {
@@ -2321,7 +2296,7 @@ html[data-theme='dark'] {
               border-radius: 5px;
               text-align: center;
               cursor: pointer;
-              transition: .2s;
+              transition: 0.2s;
               align-items: center;
               -youbkit-touch-callout: none;
               -youbkit-user-select: none;
@@ -2344,7 +2319,7 @@ html[data-theme='dark'] {
                 font-size: 12px;
                 margin: 0;
                 display: flex;
-                gap: .5em;
+                gap: 0.5em;
                 align-items: center;
                 color: $color7;
               }
@@ -2359,11 +2334,11 @@ html[data-theme='dark'] {
         padding: 1em;
 
         &_text {
-          font-size: 24px
+          font-size: 24px;
         }
 
         .add_number_but {
-          @include but($color5)
+          @include but($color5);
         }
       }
     }
@@ -2401,7 +2376,7 @@ html[data-theme='dark'] {
         }
 
         h4 {
-          margin: 0
+          margin: 0;
         }
 
         .spliter {
@@ -2434,12 +2409,12 @@ html[data-theme='dark'] {
 
           p {
             margin: 0;
-            padding: .5em 1em;
+            padding: 0.5em 1em;
             background-color: $color5;
             box-shadow: 0 0 10px -3px $color1;
             margin-bottom: 5px;
             cursor: pointer;
-            transition: .2s;
+            transition: 0.2s;
             font-size: 14px;
             height: fit-content;
 
@@ -2464,13 +2439,12 @@ html[data-theme='dark'] {
             resize: vertical;
             width: 100%;
             font-size: 14px;
-            padding: .5em;
-            margin: .5em 0;
+            padding: 0.5em;
+            margin: 0.5em 0;
           }
 
           span {
             color: $color6;
-
           }
         }
 
@@ -2481,11 +2455,10 @@ html[data-theme='dark'] {
           input {
             @include default_input();
             width: 100%;
-
           }
 
           .error_block {
-            color: $color4
+            color: $color4;
           }
         }
 
@@ -2501,12 +2474,12 @@ html[data-theme='dark'] {
           .interval_values {
             display: flex;
             align-items: center;
-            gap: .5em;
+            gap: 0.5em;
 
             .interval_values_random {
               display: flex;
               align-items: center;
-              gap: .5em
+              gap: 0.5em;
             }
           }
 
@@ -2521,14 +2494,14 @@ html[data-theme='dark'] {
           .text_input_random {
             @include default_input();
             width: 30%;
-            padding: .5em;
+            padding: 0.5em;
             font-size: 20px;
             font-weight: bold;
             text-align: center;
           }
 
           .after_text {
-            width: 50px
+            width: 50px;
           }
 
           .save_but {
@@ -2555,7 +2528,6 @@ html[data-theme='dark'] {
         .no_money_window {
           height: fit-content;
         }
-
       }
 
       .window_add_account {
@@ -2579,7 +2551,7 @@ html[data-theme='dark'] {
           }
 
           .disabled_but {
-            opacity: .7
+            opacity: 0.7;
           }
         }
       }
@@ -2607,9 +2579,9 @@ html[data-theme='dark'] {
             background-color: $color5;
             border-radius: 5px;
             box-shadow: 0 0 10px -3px $color5;
-            padding: .5em 1em;
+            padding: 0.5em 1em;
             cursor: pointer;
-            transition: .1s;
+            transition: 0.1s;
 
             &:hover {
               box-shadow: 0 0 10px -1px $color5;
@@ -2629,7 +2601,6 @@ html[data-theme='dark'] {
       max-width: 960px;
 
       .block_messages {
-
         &_item {
           background-color: $color2;
           margin: 2em 0;
@@ -2699,7 +2670,7 @@ html[data-theme='dark'] {
           box-sizing: border-box;
           box-shadow: 0 0 10px -5px $color2;
           cursor: pointer;
-          transition: .1s;
+          transition: 0.1s;
           text-align: justify;
 
           h2 {
@@ -2785,7 +2756,7 @@ html[data-theme='dark'] {
 
           a {
             display: flex;
-            gap: .5em;
+            gap: 0.5em;
             align-items: center;
           }
         }
@@ -2795,20 +2766,18 @@ html[data-theme='dark'] {
 
   @keyframes loading {
     0% {
-      transform: rotate(0deg)
+      transform: rotate(0deg);
     }
 
     100% {
-      transform: rotate(360deg)
+      transform: rotate(360deg);
     }
   }
 
   @media screen and (max-width: 1000px) {
-
     .panel_container,
     .header {
       width: 720px;
-
     }
   }
 
@@ -2937,12 +2906,11 @@ html[data-theme='dark'] {
     .spam_block {
       grid-column: 1/3;
     }
-
   }
 
   @media screen and (max-width: 450px) {
     .panel_title {
-      font-size: 24px
+      font-size: 24px;
     }
 
     .sign_block {
@@ -2953,25 +2921,25 @@ html[data-theme='dark'] {
 
     .userinfo {
       h2 {
-        font-size: 20px
+        font-size: 20px;
       }
 
       .balance {
-        gap: .5em !important;
-        font-size: 14px
+        gap: 0.5em !important;
+        font-size: 14px;
       }
 
       svg {
-        width: 15px !important
+        width: 15px !important;
       }
     }
 
     .numbers {
-      padding-top: .5em;
+      padding-top: 0.5em;
 
       h3 {
         font-size: 16px;
-        margin: .5em 0;
+        margin: 0.5em 0;
       }
     }
 
@@ -2991,34 +2959,32 @@ html[data-theme='dark'] {
     .info_group {
       .tel {
         h2 {
-          font-size: 18px
+          font-size: 18px;
         }
 
         p {
-          font-size: 10px !important
+          font-size: 10px !important;
         }
       }
 
       .extra_info {
         p {
-          font-size: 14px
+          font-size: 14px;
         }
 
         .title {
-          font-size: 10px !important
+          font-size: 10px !important;
         }
       }
 
       .expiration {
         .ex_title {
-          font-size: 10px !important
+          font-size: 10px !important;
         }
       }
     }
 
     .container {
-
-
       .messages_container {
         h1 {
           font-size: 24px;
@@ -3049,15 +3015,13 @@ html[data-theme='dark'] {
   }
 
   @media screen and (max-width: 375px) {
-
     .numbers {
-      padding: .5em 0 !important;
+      padding: 0.5em 0 !important;
     }
 
     .sign_block {
       width: 90vw !important;
     }
-
   }
 
   @media screen and (max-width: 350px) {
@@ -3070,7 +3034,6 @@ html[data-theme='dark'] {
     }
 
     .block_messages {
-
       &_item {
         padding: 1em !important;
 
@@ -3086,12 +3049,10 @@ html[data-theme='dark'] {
   }
 
   hr {
-    background-color: #2B5278;
-    color: #2B5278;
+    background-color: #2b5278;
+    color: #2b5278;
   }
-
 }
-
 
 @font-face {
   font-family: "Montserrat-Medium";
@@ -3105,7 +3066,7 @@ html[data-theme='dark'] {
 
 hr {
   border-color: #d0d0df;
-  opacity: .7;
+  opacity: 0.7;
   margin: 30px 0;
 }
 

@@ -1,7 +1,7 @@
-import {useCallback, useEffect, useState} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Loading from '../../assets/Loading'
-import {useDispatch, useSelector} from 'react-redux'
-import {LOGIN} from '../../reducers/types'
+import { useDispatch, useSelector } from 'react-redux'
+import { LOGIN } from '../../reducers/types'
 import SignHandler from '../sign/SignHandler'
 import LogoBlock from './LogoBlock'
 import MenuItems from './MenuItems'
@@ -12,6 +12,7 @@ const Header = () => {
     const user_data = useSelector(m => m.app.user_data)
     const [isLoading, setLoading] = useState(true)
     const [switchMenu, setSwitchMenu] = useState(false)
+    
 
     const loginHandler = useCallback(() => {
         setLoading(true)
@@ -19,17 +20,17 @@ const Header = () => {
         const password = localStorage.getItem('password')
 
         username &&
-        SignHandler(username, password, "login").then((data) => {
-            if (data[0]) {
-                dispatch({type: LOGIN, payload: data[1]})
-            }
-        })
+            SignHandler(username, password, "login").then((data) => {
+                if (data[0]) {
+                    dispatch({ type: LOGIN, payload: data[1] })
+                }
+            })
         setLoading(false)
     }, [dispatch])
     useEffect(() => loginHandler(), [loginHandler])
 
     return isLoading
-        ? <Loading width={20}/>
+        ? <Loading width={20} />
         : <div className="header">
             <LogoBlock />
             <div className='open_menu' onClick={() => setSwitchMenu(!switchMenu)}>
@@ -38,10 +39,10 @@ const Header = () => {
                 <div className={'line' + (switchMenu ? ' active' : '')}></div>
             </div>
             <div className={'menu' + (switchMenu ? ' active_menu burger' : '')}>
-                <div className={'logoBurger'}><LogoBlock/></div>
-                <MenuItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu}/>
+                <div className={'logoBurger'}><LogoBlock /></div>
+                <MenuItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} />
 
-                <AccountItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} user_data={user_data}/>
+                <AccountItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} user_data={user_data} />
             </div>
         </div>
 }

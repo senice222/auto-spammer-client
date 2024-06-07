@@ -56,5 +56,9 @@
   }
   @media (max-width: 1080px) {
     width: 85vw !important;
+    .item {
+      margin-top: 20px;
+      height: auto !important;
+    }
   }
 }

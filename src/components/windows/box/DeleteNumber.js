@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { CLOSE_WINDOW, DELETE_FROM_NUMBER_LIST, DELETE_NUMBER } from "../../../reducers/types"
 import DeleteNumberQuery from "../../queries/DeleteNumberQuery"
 import UpdateData from "../../handlers/UpdateData"
+import { notification } from "antd"
 
 const DeleteNumber = () => {
     const dispatch = useDispatch()
@@ -15,7 +16,14 @@ const DeleteNumber = () => {
             dispatch({ type: DELETE_NUMBER })
             UpdateData(user_data, dispatch)
         })
-
+        notification.success({
+            message: 'Вы успешно удалили номер телефона.',
+            duration: 2.5,
+            style: {
+                background: "white",
+                fontFamily: "Montserrat-Medium",
+            }
+        });
         dispatch({ type: CLOSE_WINDOW })
     }
     return <div className="window_content delete_window">
