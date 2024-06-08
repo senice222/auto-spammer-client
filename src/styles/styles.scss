@@ -348,6 +348,7 @@ html[data-theme="light"] {
     width: 100vw;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden !important;
     //padding: 0 2em;
 
     .main_container {
@@ -1885,6 +1886,7 @@ html[data-theme="dark"] {
     width: 100vw;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden !important;
     //padding: 0 2em;
 
     .main_containerr {
