@@ -16,7 +16,6 @@ const MainPage = () => {
         <>
             <div className="main_container">
                 <motion.img
-                
                     initial={{ x: 100, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{
@@ -27,7 +26,7 @@ const MainPage = () => {
                             damping: 20,
                         },
                         opacity: {
-                            duration: 1.5,
+                            duration: 1,
                             ease: 'easeInOut',
                         },
                         duration: 2,

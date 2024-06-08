@@ -15,7 +15,9 @@ const MessagesPage = () => {
     const user_data = useSelector(n => n.app.user_data)
     const [edit_mod, setEditMod] = useState(false)
     const [isLoading, setLoading] = useState(true)
+
     useEffect(() => window.scrollTo(0, 0), [location])
+
     useEffect(() => {
         setLoading(true)
         UpdateData(user_data, dispatch)

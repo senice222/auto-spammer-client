@@ -452,7 +452,7 @@ html[data-theme="light"] {
       }
 
       .w-menu {
-        padding: 20px;
+        padding: 15px;
       }
 
       .w-sign {
@@ -1273,7 +1273,9 @@ html[data-theme="light"] {
     .open_menu {
       opacity: 1 !important;
     }
-
+    .logo {
+      //margin: 0;
+    }
     .menu {
       @include free_block();
       display: grid !important;
@@ -1282,7 +1284,7 @@ html[data-theme="light"] {
       z-index: 2;
       align-items: center;
       align-content: center;
-      gap: 2em;
+      //gap: 2em;
       justify-content: center !important;
       left: 1000px;
 
@@ -1986,7 +1988,7 @@ html[data-theme="dark"] {
       }
 
       .w-menu {
-        padding: 20px;
+        padding: 15px;
       }
 
       .w-sign {
@@ -2806,7 +2808,9 @@ html[data-theme="dark"] {
     .open_menu {
       opacity: 1 !important;
     }
-
+  .logo {
+    //margin: 0;
+  }
     .menu {
       @include free_block();
       display: grid !important;
@@ -2815,7 +2819,6 @@ html[data-theme="dark"] {
       z-index: 2;
       align-items: center;
       align-content: center;
-      gap: 2em;
       justify-content: center !important;
       left: 1000px;
 

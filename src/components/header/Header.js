@@ -12,7 +12,16 @@ const Header = () => {
     const user_data = useSelector(m => m.app.user_data)
     const [isLoading, setLoading] = useState(true)
     const [switchMenu, setSwitchMenu] = useState(false)
-    
+
+    useEffect(() => {
+        if (switchMenu) {
+            document.body.style.overflowY = "hidden";
+        } else {
+            document.body.style.overflowY = "";
+        }
+
+    }, [switchMenu]);
+
 
     const loginHandler = useCallback(() => {
         setLoading(true)
@@ -39,7 +48,7 @@ const Header = () => {
                 <div className={'line' + (switchMenu ? ' active' : '')}></div>
             </div>
             <div className={'menu' + (switchMenu ? ' active_menu burger' : '')}>
-                <div className={'logoBurger'}><LogoBlock /></div>
+                <div className={'logoBurger'}><LogoBlock margin={switchMenu}/></div>
                 <MenuItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} />
 
                 <AccountItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} user_data={user_data} />
