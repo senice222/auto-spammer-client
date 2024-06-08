@@ -448,6 +448,7 @@ html[data-theme="light"] {
         display: flex;
         flex: 1;
         justify-content: space-between;
+        align-items: center;
         transition: 0.1s;
         overflow-x: hidden;
       }
@@ -1985,6 +1986,7 @@ html[data-theme="dark"] {
         display: flex;
         flex: 1;
         justify-content: space-between;
+        align-items: center;
         transition: 0.1s;
         overflow-x: hidden;
       }
