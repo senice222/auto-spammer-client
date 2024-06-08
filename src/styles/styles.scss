@@ -13,6 +13,10 @@
   }
 }
 
+* {
+  overflow-x: hidden;
+}
+
 html[data-theme="light"] {
   $color1: #f1f1f1;
   $color2: #ededed;
