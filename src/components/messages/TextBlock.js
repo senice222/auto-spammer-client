@@ -1,28 +1,46 @@
-import {useDispatch} from "react-redux"
-import {CHANGE_MESSAGE_TEXT} from "../../reducers/types"
-import {useEffect, useRef, useState} from "react";
+import React, {useState, useRef, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {CHANGE_MESSAGE_TEXT} from "../../reducers/types";
 
 const TextBlock = ({m, edit_mod}) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const textareaRef = useRef(null);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(m.text);
+    const [heights, setHeights] = useState(() => {
+        // Retrieve initial heights from localStorage or set an empty object
+        const savedHeights = localStorage.getItem('textareaHeights');
+        return savedHeights ? JSON.parse(savedHeights) : {};
+    });
 
-    const changeText = (e) => {
-        setValue(m.text);
-        dispatch({
-            type: CHANGE_MESSAGE_TEXT,
-            payload: [m.id, e]
-        })
-    };
+    useEffect(() => {
+        // Adjust the height based on the stored height or adjust it based on the current content
+        if (edit_mod === m.id) {
+            const storedHeight = heights[m.id];
+            if (storedHeight && textareaRef.current) {
+                textareaRef.current.style.height = `${storedHeight}px`;
+            } else {
+                adjustTextareaHeight();
+            }
+        }
+    }, [edit_mod]);
 
     useEffect(() => {
         adjustTextareaHeight();
     }, [value]);
 
+    const changeText = (e) => {
+        const newValue = e.target.value;
+        setValue(newValue);
+        dispatch({
+            type: CHANGE_MESSAGE_TEXT,
+            payload: [m.id, newValue],
+        });
+    };
+
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && e.shiftKey) {
-            adjustTextareaHeight();
-            setValue(prev => prev + '\n');
+            e.preventDefault(); // Prevents the default behavior of adding a new line
+            setValue((prev) => prev + '\n');
         }
     };
 
@@ -30,24 +48,30 @@ const TextBlock = ({m, edit_mod}) => {
         if (textareaRef.current) {
             textareaRef.current.style.height = 'auto';
             textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+
+            // Save the height to state and localStorage
+            setHeights((prevHeights) => {
+                const newHeights = {...prevHeights, [m.id]: textareaRef.current.scrollHeight};
+                localStorage.setItem('textareaHeights', JSON.stringify(newHeights));
+                return newHeights;
+            });
         }
     };
 
     return (
         edit_mod === m.id ? (
                 <div className={"svgDiv"}>
-                    <textarea
-                        className="textBlockk"
-                        style={{padding: "10px 10px"}}
-                        value={m.text}
-                        ref={textareaRef}
-                        onKeyDown={handleKeyDown}
-                        rows={1}
-                        onChange={(e) => changeText(e.target.value)}
-                    />
+        <textarea
+            className="textBlockk"
+            style={{padding: "10px 10px"}}
+            value={value}
+            ref={textareaRef}
+            onKeyDown={handleKeyDown}
+            rows={1}
+            onChange={changeText}
+        />
                 </div>
-            )
-            :
+            ) :
             <div className={"svgDiv"} style={{display: "flex"}}>
                 <div className="text_block">
                     <p>{m.text || "Пусто"}</p>

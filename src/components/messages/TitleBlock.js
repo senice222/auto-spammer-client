@@ -30,7 +30,7 @@ const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
                 await ChangeFields(getTitle(), m.text, number_data.number)
                 notification.success({
                     message: 'Вы успешно изменили сообщение.',
-                    duration: 2.4,
+                    duration: 2,
                     style: {
                         background: "white",
                         fontFamily: "Montserrat-Medium",
