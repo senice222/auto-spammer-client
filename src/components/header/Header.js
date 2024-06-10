@@ -7,7 +7,7 @@ import LogoBlock from './LogoBlock'
 import MenuItems from './MenuItems'
 import AccountItems from './AccountItems'
 
-const Header = () => {
+const Header = ({signIn, signUp}) => {
     const dispatch = useDispatch()
     const user_data = useSelector(m => m.app.user_data)
     const [isLoading, setLoading] = useState(true)
@@ -51,7 +51,7 @@ const Header = () => {
                 <div className={'logoBurger'}><LogoBlock margin={switchMenu}/></div>
                 <MenuItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} />
 
-                <AccountItems switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} user_data={user_data} />
+                <AccountItems signIn={signIn} signUp={signUp} switchMenu={switchMenu} setSwitchMenu={setSwitchMenu} user_data={user_data} />
             </div>
         </div>
 }

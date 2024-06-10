@@ -41,7 +41,7 @@ const WindowControl = () => {
         2: type === 'Cryptobot' ? <EnterAmount type={type} setStep={setStep} setAmount={setAmount}/> : null,
         3: <FinalStep type={type} amount={amount} crypto={crypto}/>
     };
-    console.log(step)
+
     const getSelectWindow = () => {
         switch (type_window) {
             case 'list_numbers':

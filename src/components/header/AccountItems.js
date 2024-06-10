@@ -5,7 +5,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import {useTheme} from "../../hooks/useTheme";
 
-const AccountItems = ({user_data, setSwitchMenu, switchMenu}) => {
+const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) => {
     const {theme, setTheme} = useTheme()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -45,8 +45,14 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu}) => {
                         :
                         <DarkModeIcon style={{cursor: "pointer", color: "white"}} fontSize={"large"} onClick={() => handleTheme()} />
                 }
-                <Link className='item signin' onClick={() => setSwitchMenu(!switchMenu)} to={'/signin'}>Войти в аккаунт</Link>
-                {/*<Link className='item signup' onClick={() => setSwitchMenu(!switchMenu)} to={'/signup'}>Регистрация</Link>*/}
+                <div className='item signin' onClick={() => {
+                    setSwitchMenu(!switchMenu)
+                    signIn()
+                }}>Войти</div>
+                <div className='item signup' onClick={() => {
+                    setSwitchMenu(!switchMenu)
+                    signUp()
+                }}>Регистрация</div>
             </div>}
     </div>
 }

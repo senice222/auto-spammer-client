@@ -8,7 +8,6 @@ import UpdateData from "../handlers/UpdateData"
 import Loading from "../../assets/Loading"
 
 const MessagesPage = () => {
-
     const location = useLocation()
     const dispatch = useDispatch()
     const number_data = useSelector(n => n.app.number_data)
