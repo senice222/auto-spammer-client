@@ -13,7 +13,7 @@ import NewsPage from './components/news/NewsPage';
 import ContactsPage from './components/contacts/ContactsPage';
 import NewsItemPage from './components/news/NewsItemPage';
 import {useTheme} from "./hooks/useTheme";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import AgreementPolicy from "./pages/AgreementPolicy/AgreementPolicy";
 

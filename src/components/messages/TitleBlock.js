@@ -2,11 +2,8 @@ import {useSelector} from "react-redux"
 import ChangeFields from "../queries/ChangeFields";
 import {notification} from "antd";
 import '../../styles/styles.scss'
-import {useSnackbar} from 'notistack';
 
 const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
-    const {enqueueSnackbar} = useSnackbar();
-
     const getTitle = () => {
         switch (m.id) {
             case 1:
@@ -21,7 +18,7 @@ const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
                 break
         }
     }
-
+    
     const number_data = useSelector(s => s.app.number_data)
 
     const editModHandler = async () => {
@@ -32,7 +29,6 @@ const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
                     message: 'Вы успешно изменили сообщение.',
                     duration: 2,
                     style: {
-                        background: "white",
                         fontFamily: "Montserrat-Medium",
                     }
                 });
@@ -46,9 +42,9 @@ const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
     return (
         <div className="title_block">
             <h3>Сообщение #{index}</h3>
-            <div className="change_but" onClick={editModHandler}>
+            {getTextBut() === "Сохранить" && <div className="change_but" onClick={editModHandler}>
                 {getTextBut()}
-            </div>
+            </div>}
         </div>
     )
 }

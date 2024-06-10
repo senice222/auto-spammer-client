@@ -2,77 +2,79 @@ import React, {useState, useRef, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {CHANGE_MESSAGE_TEXT} from "../../reducers/types";
 
-const TextBlock = ({m, edit_mod}) => {
-    const dispatch = useDispatch();
-    const textareaRef = useRef(null);
-    const [value, setValue] = useState(m.text);
+
+const TextBlock = ({m, edit_mod, setEditMod}) => {
+    const dispatch = useDispatch()
+    const textareaRef = useRef(null)
+    const [value, setValue] = useState(m.text)
     const [heights, setHeights] = useState(() => {
-        // Retrieve initial heights from localStorage or set an empty object
         const savedHeights = localStorage.getItem('textareaHeights');
-        return savedHeights ? JSON.parse(savedHeights) : {};
-    });
+        return savedHeights ? JSON.parse(savedHeights) : {}
+    })
 
     useEffect(() => {
-        // Adjust the height based on the stored height or adjust it based on the current content
         if (edit_mod === m.id) {
-            const storedHeight = heights[m.id];
+            const storedHeight = heights[m.id]
             if (storedHeight && textareaRef.current) {
-                textareaRef.current.style.height = `${storedHeight}px`;
+                textareaRef.current.style.height = `${storedHeight}px`
             } else {
                 adjustTextareaHeight();
             }
         }
-    }, [edit_mod]);
+    }, [edit_mod])
 
     useEffect(() => {
-        adjustTextareaHeight();
-    }, [value]);
+        adjustTextareaHeight()
+    }, [value])
 
+    const editModHandler = async () => {
+        setEditMod(m.id)
+        console.log(m)
+    }
     const changeText = (e) => {
-        const newValue = e.target.value;
-        setValue(newValue);
+        const newValue = e.target.value
+        setValue(newValue)
         dispatch({
             type: CHANGE_MESSAGE_TEXT,
             payload: [m.id, newValue],
-        });
-    };
+        })
+    }
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && e.shiftKey) {
-            e.preventDefault(); // Prevents the default behavior of adding a new line
-            setValue((prev) => prev + '\n');
+            e.preventDefault()
+            setValue((prev) => prev + '\n')
         }
-    };
+    }
 
     const adjustTextareaHeight = () => {
         if (textareaRef.current) {
-            textareaRef.current.style.height = 'auto';
-            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+            textareaRef.current.style.height = 'auto'
+            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
 
-            // Save the height to state and localStorage
             setHeights((prevHeights) => {
-                const newHeights = {...prevHeights, [m.id]: textareaRef.current.scrollHeight};
-                localStorage.setItem('textareaHeights', JSON.stringify(newHeights));
-                return newHeights;
-            });
+                const newHeights = {...prevHeights, [m.id]: textareaRef.current.scrollHeight}
+                localStorage.setItem('textareaHeights', JSON.stringify(newHeights))
+                return newHeights
+            })
         }
     };
 
     return (
         edit_mod === m.id ? (
-                <div className={"svgDiv"}>
-        <textarea
-            className="textBlockk"
-            style={{padding: "10px 10px"}}
-            value={value}
-            ref={textareaRef}
-            onKeyDown={handleKeyDown}
-            rows={1}
-            onChange={changeText}
-        />
-                </div>
+            <div className={"svgDiv"}>
+                <textarea
+                    className="textBlockk"
+                    style={{padding: "10px 10px"}}
+                    value={value}
+                    ref={textareaRef}
+                    onKeyDown={handleKeyDown}
+                    rows={1}
+                    onChange={changeText}
+                />
+            </div>
             ) :
-            <div className={"svgDiv"} style={{display: "flex"}}>
+            <div onClick={editModHandler} className={"svgDiv"} style={{display: "flex"}}>
                 <div className="text_block">
                     <p>{m.text || "Пусто"}</p>
                 </div>

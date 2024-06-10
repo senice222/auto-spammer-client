@@ -32,7 +32,7 @@ const MessagesPage = () => {
                 {number_data.messages.map((m, i) =>
                     <div key={i} className="block_messages_item">
                         <TitleBlock edit_mod={edit_mod} setEditMod={setEditMod} index={i + 1} m={m} />
-                        <TextBlock m={m} edit_mod={edit_mod} />
+                        <TextBlock m={m} edit_mod={edit_mod} setEditMod={setEditMod} />
                     </div>)}
             </div>
         </div>

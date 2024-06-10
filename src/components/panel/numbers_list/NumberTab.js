@@ -17,7 +17,6 @@ const NumberTab = ({id, current_number_id, number}) => {
                 message: 'Вы успешно выбрали номер телефона.',
                 duration: 1.5,
                 style: {
-                    background: "white",
                     fontFamily: "Montserrat-Medium",
                 }
             });

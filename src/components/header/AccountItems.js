@@ -45,8 +45,8 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu}) => {
                         :
                         <DarkModeIcon style={{cursor: "pointer", color: "white"}} fontSize={"large"} onClick={() => handleTheme()} />
                 }
-                <Link className='item signin' onClick={() => setSwitchMenu(!switchMenu)} to={'/signin'}>Войти</Link>
-                <Link className='item signup' onClick={() => setSwitchMenu(!switchMenu)} to={'/signup'}>Регистрация</Link>
+                <Link className='item signin' onClick={() => setSwitchMenu(!switchMenu)} to={'/signin'}>Войти в аккаунт</Link>
+                {/*<Link className='item signup' onClick={() => setSwitchMenu(!switchMenu)} to={'/signup'}>Регистрация</Link>*/}
             </div>}
     </div>
 }

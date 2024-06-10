@@ -13,6 +13,10 @@
   }
 }
 
+.hiddd {
+  display: none;
+}
+
 body {
   overflow-x: hidden;
 }
@@ -27,6 +31,14 @@ html[data-theme="light"] {
   $color7: #2f2f2f;
   $color8: #adaccb;
 
+  .ant-notification-notice-wrapper {
+    animation: fadeout 1.9s forwards !important;
+    background-color: $color1 !important;
+    color: black;
+    div {
+      border-radius: 5px;
+    }
+  }
   .methods1 {
     div {
       background: $color5 !important;
@@ -626,7 +638,7 @@ html[data-theme="light"] {
           justify-content: flex-start;
 
           &_tab {
-            @include but($color5);
+            @include but($color2);
             display: grid;
             font-size: 14px;
             padding: 0.5em 1em;
@@ -650,7 +662,7 @@ html[data-theme="light"] {
 
           .active_tab {
             cursor: auto;
-            background-color: $color2;
+            background-color: $color5;
 
             &:hover {
               opacity: 1;
@@ -1544,12 +1556,25 @@ html[data-theme="dark"] {
   $color6: #7f91a4;
   $color7: #d0d0df;
   $color8: #52cb5f;
+  .ant-notification-notice-wrapper {
+    animation: fadeout 1.9s forwards !important;
+    background-color: $color2 !important;
 
+    div {
+      border-radius: 5px;
+      color: $color7 !important;
+    }
+  }
   .divtextt {
     display: grid;
     margin-top: 10vh;
     //width: 50%;
     //z-index: 1;
+  }
+
+  .linkkReg {
+    font-size: 14px;
+    text-decoration: underline;
   }
 
   @keyframes fadeout {
@@ -2164,7 +2189,7 @@ html[data-theme="dark"] {
           justify-content: flex-start;
 
           &_tab {
-            @include but($color5);
+            @include but($color2);
             display: grid;
             font-size: 14px;
             padding: 0.5em 1em;
@@ -2188,7 +2213,7 @@ html[data-theme="dark"] {
 
           .active_tab {
             cursor: auto;
-            background-color: $color2;
+            background-color: $color5;
 
             &:hover {
               opacity: 1;

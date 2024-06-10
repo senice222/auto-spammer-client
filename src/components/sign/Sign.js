@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom"
+import {Link, useLocation, useNavigate} from "react-router-dom"
 import tg_icon from '../../assets/img/tg_icon.svg'
 import { useEffect, useState } from "react"
 import SignHandler from "./SignHandler"
@@ -58,6 +58,7 @@ const Sign = (isLogin) => {
             <label htmlFor="login">Логин</label><input id="login" value={username} placeholder="Введите логин" onChange={async(e) => setUsername(e.target.value)} />
             <label htmlFor="password">Пароль</label><input id="password" value={password} type="password" placeholder="Введите пароль" onChange={(e) => setPassword(e.target.value)} />
             <div className="control_block">
+                {isLogin && <Link className={"linkkReg"} to={'/signup'}>Если у вас нет аккаунта, то зарегестрируйтесь</Link>}
                 {textError && <p className="error">{textError}</p>}
                 <div className="sign_but" onClick={() => regHundler()}>{content.but}</div>
                 <div className="sign_but_tg"><img src={tg_icon} alt="" />Войти через Telegram</div>
