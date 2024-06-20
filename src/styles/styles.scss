@@ -169,7 +169,7 @@ html[data-theme="light"] {
     font-family: Montserrat-Medium;
     border: 1px solid $color3;
     color: $color6;
-    resize: vertical;
+    resize: none !important;
   }
 
   @mixin block_panel {
@@ -896,7 +896,7 @@ html[data-theme="light"] {
             padding: 0.5em 1em;
             background-color: $color5;
             box-shadow: 0 0 10px -3px $color1;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
             cursor: pointer;
             transition: 0.2s;
             font-size: 14px;
@@ -1697,6 +1697,7 @@ html[data-theme="dark"] {
     background-color: $color5;
     padding: 5px 10px;
     border-radius: 5px;
+    resize: none !important;
     width: 100%;
     outline: none;
     box-sizing: border-box;
@@ -2447,7 +2448,7 @@ html[data-theme="dark"] {
             padding: 0.5em 1em;
             background-color: $color5;
             box-shadow: 0 0 10px -3px $color1;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
             cursor: pointer;
             transition: 0.2s;
             font-size: 14px;

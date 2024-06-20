@@ -1,17 +1,16 @@
+import $api from "./core/axios";
+
 const GetPhones = async (id) => {
-    let response = await fetch('https://vm-c6638fea.na4u.ru/get_phones', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "id": id,
-            "fields": ["id_phone", "phone"]
-        })
-    })
-        .then((response) => response.json())
+    try {
+        const {data} = await $api.post(`/get_phones`, {
+            id,
+            fields: ["id_phone", "phone"]
+        });
+        console.log(data)
+        return data.result;
+    } catch (error) {
+        console.error("Ошибка при выполнении запроса:", error);
+    }
+};
 
-    return response.result
-}
-
-export default GetPhones
+export default GetPhones;

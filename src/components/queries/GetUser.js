@@ -10,7 +10,7 @@ const GetUser = async (id) => {
         })
     })
         .then((response) => response.json())
-
+    console.log(response)
     return response.result
 }
 

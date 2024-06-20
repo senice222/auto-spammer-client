@@ -2,11 +2,11 @@ import SpamBlock from "./SpamBlock"
 import SwitchBut from "./SwitchBut"
 import DeleteBut from "./DeleteBut"
 
-const ControlBlock = ({status}) => {
+const ControlBlock = ({status, sub, phone}) => {
 
     return <div className='control_block'>
         <SpamBlock />
-        <SwitchBut status={status}/>
+        <SwitchBut sub={sub} status={status} phone={phone}/>
         <DeleteBut />
     </div>
 }

@@ -40,23 +40,43 @@ const TextBlock = ({m, edit_mod, setEditMod}) => {
         })
     }
 
+    const isMobile = () => {
+        return window.matchMedia("(max-width: 768px)").matches;
+    };
+
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter' && e.shiftKey) {
-            e.preventDefault()
-            setValue((prev) => prev + '\n')
+        const maxLines = isMobile() ? 5 : 7;
+        const maxCols = 50;
+
+        const text = e.target.value;
+        const lines = text.split("\n");
+        const currentLine = text.substr(0, e.target.selectionStart).split("\n").length;
+
+        if (e.key === 'Enter' && !e.shiftKey) {
+            if (lines.length >= maxLines) {
+                e.preventDefault();
+            }
+        } else {
+            if (lines[currentLine - 1].length >= maxCols) {
+                if (lines.length <= maxLines - 1) {
+                    setValue((prev) => prev + '\n');
+                } else {
+                    e.preventDefault();
+                }
+            }
         }
-    }
+    };
 
     const adjustTextareaHeight = () => {
         if (textareaRef.current) {
-            textareaRef.current.style.height = 'auto'
-            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+            textareaRef.current.style.height = 'auto';
+            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
 
             setHeights((prevHeights) => {
-                const newHeights = {...prevHeights, [m.id]: textareaRef.current.scrollHeight}
-                localStorage.setItem('textareaHeights', JSON.stringify(newHeights))
-                return newHeights
-            })
+                const newHeights = { ...prevHeights, [m.id]: textareaRef.current.scrollHeight };
+                localStorage.setItem('textareaHeights', JSON.stringify(newHeights));
+                return newHeights;
+            });
         }
     };
 
@@ -65,7 +85,7 @@ const TextBlock = ({m, edit_mod, setEditMod}) => {
             <div className={"svgDiv"}>
                 <textarea
                     className="textBlockk"
-                    style={{padding: "10px 10px"}}
+                    style={{ padding: "10px 10px" }}
                     value={value}
                     ref={textareaRef}
                     onKeyDown={handleKeyDown}

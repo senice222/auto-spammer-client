@@ -20,9 +20,10 @@ const PanelPage = () => {
     const openAdder = () => dispatch({ type: OPEN_WINDOW, payload: "add_account" })
 
     useEffect(() => window.scrollTo(0, 0), [location])
+
     useEffect(() => {
-        const username = localStorage.getItem("username")
-        if (username) {
+        const token = localStorage.getItem("refresh")
+        if (token) {
             UpdateData(user_data, dispatch).then(async data => data !== false && setLoading(false))
         } else {
             navigate("/signup")

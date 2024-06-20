@@ -7,11 +7,9 @@ import { LOGIN } from "../../reducers/types"
 import Loading from "../../assets/Loading"
 
 const Sign = (isLogin, setOpen) => {
-
     const location = useLocation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [textError, setTextError] = useState()
@@ -23,6 +21,9 @@ const Sign = (isLogin, setOpen) => {
         but: isLogin ? "Войти" : "Зарегистрироваться",
         api_link: isLogin ? 'login' : 'registration'
     }
+    useEffect(() => {
+        console.log(localStorage.getItem('password'))
+    }, [])
 
     const regHundler = () => {
         setTextError()
@@ -33,6 +34,8 @@ const Sign = (isLogin, setOpen) => {
                         if (data[0]) {
                             setOpen()
                             dispatch({ type: LOGIN, payload: data[1] })
+                            localStorage.setItem("username", data[1].username)
+                            localStorage.setItem("password", data[1].password)
                             navigate('/panel')
                         } else setTextError(data[1])
                     })

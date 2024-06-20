@@ -18,6 +18,9 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import AgreementPolicy from "./pages/AgreementPolicy/AgreementPolicy";
 import SignModal from "./components/Modal/SignModal";
 import SignInModal from "./components/Modal/SignInModal";
+import getUser from "./components/queries/GetUser";
+import getPhones from "./components/queries/GetPhones";
+import getFirstPhone from "./components/queries/GetFirstPhone";
 
 function App() {
     const status_window = useSelector(w => w.app.window_data.status)
@@ -32,6 +35,12 @@ function App() {
         }
     }, [setTheme]);
 
+    const user_data = useSelector(p => p.app.user_data)
+
+    useEffect(() => {
+        // console.log(getFirstPhone(user_data.id))
+    }, [user_data]);
+    
     return (
         <HashRouter>
             <div className="container">
@@ -48,8 +57,6 @@ function App() {
                     <Route path="/contacts" element={<ContactsPage/>}/>
                     <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
                     <Route path="/agreement-policy" element={<AgreementPolicy/>}/>
-                    {/*<Route path="/signup" element={<SignUp/>}/>*/}
-                    {/*<Route path="/signin" element={<SignIn/>}/>*/}
                     <Route path="/panel" element={<PanelPage/>}/>
                     <Route path="/panel/messages" element={<MessagesPage/>}/>
                 </Routes>

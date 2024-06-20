@@ -4,6 +4,7 @@ import { Flex, Spin } from 'antd';
 
 const FinalStep = ({setAmount, setStep}) => {
 
+
     return (
         <div className="window_content payment_window">
             <div className={style.icon}>

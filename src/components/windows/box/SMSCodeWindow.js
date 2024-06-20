@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { CLOSE_WINDOW, OPEN_WINDOW } from "../../../reducers/types"
+import {useEffect, useState} from "react"
+import {useDispatch, useSelector} from "react-redux"
+import {CLOSE_WINDOW, OPEN_WINDOW, SET_PHONES} from "../../../reducers/types"
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+import axios from "axios";
 
 const SMSCodeWindow = () => {
 
@@ -61,30 +62,44 @@ const SMSCodeWindow = () => {
         const clean_number = numValue ? numValue.match(/\d/g).join('') : ""
         setErrorText()
         if (content.value && clean_number.length === 11) {
-            if (content.nextPage === 3) {
-    
-                    let response = await fetch('https://vm-c6638fea.na4u.ru/add_phone', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            "id": user_data.id,
-                            "string_session": 112,
-                            "phone": clean_number + "",
-                            "sub_active": 1
-                        }),
-                    })
-                        .then((response) => response.json())
-                    if (response.result) {
-                        dispatch({ type: CLOSE_WINDOW })
-                        dispatch({ type: OPEN_WINDOW, payload: 'add_success' })
+            if (numberContent === 0) {
+                try {
+                    const {data} = await axios.post('https://vm-c6638fea.na4u.ru/send_code', {
+                        phone: `+${clean_number}`
+                    });
+
+                    if (data.result) {
+                        setNumberContent(1);
+                    } else {
+                        setErrorText("Ошибка при отправке кода подтверждения");
                     }
+                } catch (error) {
+                    setErrorText("Ошибка при отправке кода подтверждения");
+                }
+            }
+
+            if (content.nextPage === 3) {
+                let response = await fetch('https://vm-c6638fea.na4u.ru/add_phone', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        "id": user_data.id,
+                        "phone": `+${clean_number}`,
+                        "code": codeValue,
+                        "2fa": passwordValue
+                    }),
+                })
+                    .then((response) => response.json())
+                if (response.result) {
+                    // dispatch({type: SET_PHONES, payload: {id: user_data.id, phone: numValue}})
+                    dispatch({type: CLOSE_WINDOW})
+                    dispatch({type: OPEN_WINDOW, payload: 'add_success'})
+                }
             }
             setNumberContent(content.nextPage)
-        }
-        else setErrorText(content.error)
-
+        } else setErrorText(content.error)
     }
 
 
@@ -97,13 +112,13 @@ const SMSCodeWindow = () => {
                 placeholder={content.placeholder}
                 onChange={e => content.setValue(e)}
                 buttonClass="but_select_number_country"
-                country='ru' />
+                country='ru'/>
             : <input
                 maxLength={content.maxValue}
                 type={content.typeInput}
                 placeholder={content.placeholder}
                 value={content.value}
-                onChange={e => content.setValue(e.target.value)} />}
+                onChange={e => content.setValue(e.target.value)}/>}
         {errorText && <div className="error_block">{errorText}</div>}
         <div className="but_next" onClick={getCodeHandler}>{content.textBut}</div>
     </div>

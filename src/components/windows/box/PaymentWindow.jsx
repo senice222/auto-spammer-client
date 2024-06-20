@@ -1,5 +1,5 @@
 import style from '../../../styles/PaymentModal.module.scss'
-import {PayOkSVG, Telegram} from "./Svgs";
+import {AaioSVG, Telegram} from "./Svgs";
 
 const PaymentWindow = ({setStep, setType}) => {
 
@@ -8,11 +8,11 @@ const PaymentWindow = ({setStep, setType}) => {
             <span>Выберите удобный способ оплаты</span>
             <div className={`${style.methods} methods1`}>
                 <div onClick={() => {
-                    setType("Cryptobot")
+                    setType("Payok")
                     setStep(1)
                 }} className={style.item}>
-                    <p>Payok</p>
-                    <PayOkSVG />
+                    <p>Aaio</p>
+                    <AaioSVG />
                 </div>
                 <div onClick={() => {
                     setType("Cryptobot")

@@ -9,6 +9,7 @@ const AddAccountSuccess = () => {
         UpdateData(user_data, dispatch)
         dispatch({type: CLOSE_WINDOW})
     }
+
     return <div className="window_content sub_window">
         <span>Номер успешно добавлен в ваш аккаунт</span>
         <div className="but_next" onClick={okayBut}>Ладно</div>

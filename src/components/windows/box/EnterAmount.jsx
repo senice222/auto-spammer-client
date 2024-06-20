@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import style from "../../../styles/PaymentModal.module.scss";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {CLOSE_WINDOW} from "../../../reducers/types";
+import axios from "axios";
 
 const EnterAmount = ({type, setAmount, setStep}) => {
     const [value, setValue] = useState("")
     const [error, setError] = useState("");
     const dispatch = useDispatch()
+    const user_data = useSelector(p => p.app.user_data)
+
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
 
@@ -15,7 +18,7 @@ const EnterAmount = ({type, setAmount, setStep}) => {
         }
     };
 
-    const handleNextClick = () => {
+    const handleNextClick = async () => {
         const amount = +value;
         console.log(type);
 
@@ -25,16 +28,19 @@ const EnterAmount = ({type, setAmount, setStep}) => {
             } else {
                 setError("");
                 setAmount(amount);
-                console.log(1)
                 setStep(3);
-                // dispatch({type: CLOSE_WINDOW})
+                const {data} = await axios.post('https://vm-c6638fea.na4u.ru/add_balance_aaio', {id: user_data.id, amount: amount})
+                if (data?.result) {
+                    window.location.replace(data.result)
+                } else {
+                    setError(data?.error)
+                }
             }
         } else {
             setError("");
             setAmount(amount);
             console.log(1)
             setStep(3);
-            // dispatch({type: CLOSE_WINDOW})
         }
     };
 

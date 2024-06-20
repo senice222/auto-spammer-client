@@ -9,11 +9,13 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) =>
     const {theme, setTheme} = useTheme()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const token = localStorage.getItem("refresh")
+    const username = localStorage.getItem("username")
 
     const logoutHandler = () => {
         setSwitchMenu(!switchMenu)
         localStorage.clear()
-        navigate('/signin')
+        // navigate('/signin')
         dispatch({ type: LOGOUT })
     }
 
@@ -26,7 +28,7 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) =>
     }
 
     return <div className="account_items">
-        {user_data.isLogged
+        {token
             ? <div className='account'>
                 {
                     theme === 'light' ?
@@ -34,7 +36,7 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) =>
                         :
                         <DarkModeIcon style={{cursor: "pointer", color: "white"}} fontSize={"large"} onClick={() => handleTheme()} />
                 }
-                <p>@{user_data.username}</p>
+                <p>@{username}</p>
                 <Link className='logout_but' onClick={() => setSwitchMenu(!switchMenu)} to={"/panel"}>Панель</Link>
                 <div className='logout_but' onClick={logoutHandler}>Выйти</div>
             </div>

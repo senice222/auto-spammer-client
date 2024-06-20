@@ -1,28 +1,29 @@
-export const PayOkSVG = () => {
+export const AaioSVG = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            version="1.1"
-            x="0px"
-            y="0px"
-            viewBox="0 0 256 256"
-            enableBackground="new 0 0 256 256"
-            xmlSpace="preserve"
+            width={30}
+            height={40}
+            viewBox="0 0 30 40"
+            fill="none"
         >
-            <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
-            <g>
-                <g>
-                    <path
-                        fill="#000000"
-                        d="M14,104.9l1.3-1.3c5.3-5.3,13.9-5.3,19.1,0l77.9,77.9c5.3,5.3,5.3,13.9,0,19.1L111,202c-5.3,5.3-13.9,5.3-19.1,0L14,124.1C8.7,118.8,8.7,110.2,14,104.9z"
-                    />
-                    <path
-                        fill="#000000"
-                        d="M240.8,52.9l1.3,1.3c5.3,5.3,5.3,13.8,0,19.1L112.2,203.1c-5.3,5.3-13.8,5.3-19.1,0l-1.3-1.3c-5.3-5.3-5.3-13.8,0-19.1L221.7,52.9C226.9,47.6,235.5,47.6,240.8,52.9z"
-                    />
-                </g>
-            </g>
+            <script xmlns="" id="eppiocemhmnlbhjplcgkofciiegomcon" />
+            <script xmlns="" />
+            <script xmlns="" />
+            <path d="M11.2821 11.2821H0V23.5898H11.2821V11.2821Z" fill="#6880FF" />
+            <path d="M22.5641 0H11.2821V11.2821H22.5641V0Z" fill="#6880FF" />
+            <path
+                d="M11.2821 11.2821H0L11.2821 0V11.2821Z"
+                fill="#6880FF"
+                fillOpacity="0.5"
+            />
+            <path d="M18.4615 28.7179H29.7436V16.4102H18.4615V28.7179Z" fill="#7C5BFF" />
+            <path d="M8.20513 40H18.4615V28.7179H8.20513L8.20513 40Z" fill="#7C5BFF" />
+            <path
+                d="M18.4616 28.7179H29.7436L18.4615 39.9999L18.4616 28.7179Z"
+                fill="#7C5BFF"
+                fillOpacity="0.5"
+            />
         </svg>
     )
 }
