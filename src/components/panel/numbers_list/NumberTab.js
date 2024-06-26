@@ -1,18 +1,18 @@
-import {useDispatch, useSelector} from "react-redux"
-import {SET_NUMBER_DATA} from "../../../reducers/types"
+import { useDispatch, useSelector } from "react-redux"
+import { SET_NUMBER_DATA } from "../../../reducers/types"
 import GetFirstPhone from "../../queries/GetFirstPhone"
-import {GetNumber} from "../GetNumber"
-import {notification} from "antd";
+import { GetNumber } from "../GetNumber"
+import { notification } from "antd";
 
-const NumberTab = ({id, current_number_id, number}) => {
+const NumberTab = ({ id, current_number_id, number }) => {
     const dispatch = useDispatch()
     const user_data = useSelector(u => u.app.user_data)
-    const getClass = () => 'numbers_list_tab' + (current_number_id === id ? ' active_tab' : "")
+    const getClass = () => 'numbers_list_tab' + (number_data.number === number ? ' active_tab' : "")
+    const number_data = useSelector(s => s.app.number_data)
 
-    const selectNumber = () => current_number_id !== id
-        && GetFirstPhone(user_data.id, id).then(data => {
-            localStorage.setItem('current_tab', data.id)
-            dispatch({type: SET_NUMBER_DATA, payload: data})
+    const selectNumber = () => GetFirstPhone(user_data.id, id).then(data => {
+            localStorage.setItem('current_tab', id)
+            dispatch({ type: SET_NUMBER_DATA, payload: data })
             notification.success({
                 message: 'Вы успешно выбрали номер телефона.',
                 duration: 1.5,
@@ -23,7 +23,7 @@ const NumberTab = ({id, current_number_id, number}) => {
         })
 
     return <div className={getClass()} onClick={selectNumber}>
-        <p><GetNumber n={number}/></p>
+        <p><GetNumber n={number} /></p>
     </div>
 }
 

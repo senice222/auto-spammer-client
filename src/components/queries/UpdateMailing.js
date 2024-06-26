@@ -1,10 +1,15 @@
 import $api from "./core/axios";
 
-const GetUser = async (id) => {
+const UpdateMailing = async (id, phone, status, mode) => {
+    const body = {
+        id,
+        phone,
+        status,
+        mode
+    }
+
     try {
-        const { data } = await $api.post('get_user', {
-            id
-        });
+        const { data } = await $api.put('update_mailing', body);
 
         console.log(data);
         return data.result;
@@ -14,4 +19,4 @@ const GetUser = async (id) => {
     }
 };
 
-export default GetUser
+export default UpdateMailing

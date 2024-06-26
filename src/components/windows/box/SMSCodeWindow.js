@@ -4,6 +4,7 @@ import {CLOSE_WINDOW, OPEN_WINDOW, SET_PHONES} from "../../../reducers/types"
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import axios from "axios";
+import $api from "../../queries/core/axios";
 
 const SMSCodeWindow = () => {
 
@@ -61,13 +62,14 @@ const SMSCodeWindow = () => {
     const getCodeHandler = async () => {
         const clean_number = numValue ? numValue.match(/\d/g).join('') : ""
         setErrorText()
-        if (content.value && clean_number.length === 11) {
+        if (content.value && clean_number.length >= 8) {
             if (numberContent === 0) {
                 try {
-                    const {data} = await axios.post('https://vm-c6638fea.na4u.ru/send_code', {
+                    console.log(user_data)
+                    const {data} = await $api.post('send_code', {
+                        id: user_data.id,
                         phone: `+${clean_number}`
                     });
-
                     if (data.result) {
                         setNumberContent(1);
                     } else {
@@ -79,21 +81,19 @@ const SMSCodeWindow = () => {
             }
 
             if (content.nextPage === 3) {
-                let response = await fetch('https://vm-c6638fea.na4u.ru/add_phone', {
-                    method: 'POST',
+                let {data} = await $api.post('/add_phone', {
+                    id: user_data.id,
+                    phone: `+${clean_number}`,
+                    code: codeValue,
+                    password_2fa: passwordValue
+                }, {
                     headers: {
                         'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        "id": user_data.id,
-                        "phone": `+${clean_number}`,
-                        "code": codeValue,
-                        "2fa": passwordValue
-                    }),
-                })
-                    .then((response) => response.json())
-                if (response.result) {
-                    // dispatch({type: SET_PHONES, payload: {id: user_data.id, phone: numValue}})
+                    }
+                });
+                console.log(data)
+                if (data.result) {
+                    dispatch({type: SET_PHONES, payload: {id: user_data.id, phone: numValue}})
                     dispatch({type: CLOSE_WINDOW})
                     dispatch({type: OPEN_WINDOW, payload: 'add_success'})
                 }

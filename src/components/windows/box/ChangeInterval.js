@@ -9,6 +9,7 @@ const ChangeInterval = () => {
     const number_data = useSelector(s => s.app.number_data)
     const nrange_interval = useSelector(w => w.app.number_data.range_interval)
     const nlinterval = useSelector(w => w.app.number_data.interval)
+    const id = useSelector(n => n.app.user_data).id
 
     const [range_interval, setRangeInterval] = useState(nrange_interval || [1, 10])
     const [interval, setInterval] = useState(nlinterval)
@@ -33,7 +34,7 @@ const ChangeInterval = () => {
     const sendInterval = () => {
         const field = random_interval ? "interval_random_int" : "interval_messages",
               value = random_interval ? (range_interval || nrange_interval) : (interval || nlinterval)
-        ChangeFields(field, value, number_data.number)
+        ChangeFields(field, value, number_data.number, id)
             .then(data => data && dispatch({ type: CLOSE_WINDOW }))
 
         dispatch({ type: random_interval ? CHANGE_INTERVAL_RANGE : CHANGE_INTERVAL, payload: value })

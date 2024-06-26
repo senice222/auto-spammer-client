@@ -7,6 +7,7 @@ import Circle from "../../../assets/Circle";
 const ParamBlock = ({ cb }) => {
 
     const dispatch = useDispatch()
+    const id = useSelector(n => n.app.user_data).id
 
     const getValue = () => cb.type >= 2
         ? ((cb.param
@@ -35,19 +36,19 @@ const ParamBlock = ({ cb }) => {
                 dispatch({type: OPEN_WINDOW, payload: 'autoresponder'})
                 break;
             case 3:
-                ChangeFields("mention", +!number_data.mention, number_data.number)
+                ChangeFields("mention", +!number_data.mention, number_data.number, id)
                 .then(data => data && dispatch({type: TOGGLE_MENTION}))
                 break;
             case 4:
-                ChangeFields("interval_random_bool", +!number_data.random_interval, number_data.number)
+                ChangeFields("interval_random_bool", +!number_data.random_interval, number_data.number, id)
                 .then(data => data && dispatch({type: TOGGLE_RANDOM_INTERVAL}))
                 break;
             case 5:
-                ChangeFields("message_random_bool", +!number_data.random_messages, number_data.number)
+                ChangeFields("message_random_bool", +!number_data.random_messages, number_data.number, id)
                 .then(data => data && dispatch({type: TOGGLE_RANDOM_MESSAGES}))
                 break;
             case 6:
-                ChangeFields("auto_pay", +!number_data.autodebit, number_data.number)
+                ChangeFields("auto_pay", +!number_data.autodebit, number_data.number, id)
                 .then(data => data && dispatch({type: TOGGLE_AUTODEBIT}))
                 break;
         

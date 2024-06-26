@@ -1,17 +1,14 @@
 import $api from "./core/axios";
 
-const GetUser = async (id) => {
+const BuySubscription = async (id, phone) => {
     try {
-        const { data } = await $api.post('get_user', {
-            id
+        const {data} = await $api.put(`/buy_subscription`, {
+            id, phone
         });
-
-        console.log(data);
         return data.result;
     } catch (error) {
         console.error("Ошибка при выполнении запроса:", error);
-        throw error;
     }
 };
 
-export default GetUser
+export default BuySubscription;

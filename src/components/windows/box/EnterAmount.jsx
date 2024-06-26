@@ -3,6 +3,7 @@ import style from "../../../styles/PaymentModal.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {CLOSE_WINDOW} from "../../../reducers/types";
 import axios from "axios";
+import $api from "../../queries/core/axios";
 
 const EnterAmount = ({type, setAmount, setStep}) => {
     const [value, setValue] = useState("")
@@ -29,7 +30,7 @@ const EnterAmount = ({type, setAmount, setStep}) => {
                 setError("");
                 setAmount(amount);
                 setStep(3);
-                const {data} = await axios.post('https://vm-c6638fea.na4u.ru/add_balance_aaio', {id: user_data.id, amount: amount})
+                const {data} = await $api.post('/add_balance_aaio', {id: user_data.id, amount: amount})
                 if (data?.result) {
                     window.location.replace(data.result)
                 } else {

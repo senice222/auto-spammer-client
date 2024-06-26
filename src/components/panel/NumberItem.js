@@ -5,9 +5,7 @@ import Expiration from './Expiration'
 import ControlBlock from './control/ControlBlock'
 
 const NumberItem = () => {
-
-    const number_data = useSelector(s => s.app.number_data)
-    console.log(number_data)
+    const number_data = useSelector(s => s.app)
 
     return <div className='number_item'>
         <NumberInfo />

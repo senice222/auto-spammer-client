@@ -20,11 +20,13 @@ const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
     }
     
     const number_data = useSelector(s => s.app.number_data)
+    // const number_data = useSelector(s => s.app.number_data)
+    const user_data = useSelector(n => n.app.user_data)
 
     const editModHandler = async () => {
         if (edit_mod) {
             if (edit_mod === m.id) {
-                await ChangeFields(getTitle(), m.text, number_data.number)
+                await ChangeFields(getTitle(), m.text, number_data.number, user_data.id)
                 notification.success({
                     message: 'Вы успешно изменили сообщение.',
                     duration: 2,

@@ -7,10 +7,12 @@ import ToggleButton from 'react-toggle-button'
 const Autoresponder = () => {
     const dispatch = useDispatch()
     const number_data = useSelector(s => s.app.number_data)
+    const id = useSelector(n => n.app.user_data).id
+
     const [text, setText] = useState(number_data.text_autoresponder)
 
     const sendTextAutoresponder = () => {
-        ChangeFields('text_autoresponder', text, number_data.number)
+        ChangeFields('text_autoresponder', text, number_data.number, id)
             .then(data => {
 
                 dispatch({ type: CHANGE_TEXT_RESPONDER, payload: text })
@@ -19,7 +21,7 @@ const Autoresponder = () => {
     }
 
     const onToggle = async () => {
-        await ChangeFields("autoresponder", +!number_data.answerphone, number_data.number)
+        await ChangeFields("autoresponder", +!number_data.answerphone, number_data.number, id)
         await dispatch({ type: TOGGLE_ANSWERPHONE })
     }
 

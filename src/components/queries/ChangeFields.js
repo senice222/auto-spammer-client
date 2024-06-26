@@ -1,21 +1,27 @@
-const ChangeFields = async (title, value, number) => {
+import axios from 'axios';
+import $api from "./core/axios";
 
-    let response = await fetch('https://vm-c6638fea.na4u.ru/edit_phone', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "phone": number,
-            "fields":
-            {
+const ChangeFields = async (title, value, number, id) => {
+    try {
+        const response = await $api.put('/edit_phone', {
+            phone: number,
+            id: id,
+            fields: {
                 [title]: value
             }
-        })
-    })
-        .then((response) => response.json())
-    console.log(response)
-    return response.result
+        }, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        console.log(response.data);
+        return response.data.result;
+    } catch (error) {
+        console.error(error);
+        // Handle error appropriately
+        throw error;
+    }
 }
 
-export default ChangeFields
+export default ChangeFields;

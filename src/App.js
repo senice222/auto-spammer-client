@@ -3,7 +3,6 @@ import ErrorPage from './components/ErrorPage';
 import Header from './components/header/Header';
 import MainPage from './components/main/MainPage';
 import PanelPage from './components/panel/PanelPage';
-import {SignIn, SignUp} from './components/sign/Sign';
 import WindowControl from './components/windows/WindowControl';
 import './styles/styles.scss';
 import {HashRouter, Route, Routes} from 'react-router-dom'
@@ -18,9 +17,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import AgreementPolicy from "./pages/AgreementPolicy/AgreementPolicy";
 import SignModal from "./components/Modal/SignModal";
 import SignInModal from "./components/Modal/SignInModal";
-import getUser from "./components/queries/GetUser";
-import getPhones from "./components/queries/GetPhones";
-import getFirstPhone from "./components/queries/GetFirstPhone";
+
 
 function App() {
     const status_window = useSelector(w => w.app.window_data.status)
@@ -34,12 +31,6 @@ function App() {
             setTheme(prefersDarkScheme ? 'dark' : 'light');
         }
     }, [setTheme]);
-
-    const user_data = useSelector(p => p.app.user_data)
-
-    useEffect(() => {
-        // console.log(getFirstPhone(user_data.id))
-    }, [user_data]);
     
     return (
         <HashRouter>

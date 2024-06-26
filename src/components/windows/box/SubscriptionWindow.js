@@ -11,7 +11,7 @@ const SubscriptionWindow = () => {
         
         if(user_data.balance >= 50){
             //изменить balance у USER
-            ChangeFields("sub_date", moment().format("YYYY-MM-DD hh:mm:ss"), number_data.number)
+            ChangeFields("sub_date", moment().format("YYYY-MM-DD hh:mm:ss"), number_data.number, user_data.id)
             .then(data => {
                 dispatch({type: CLOSE_WINDOW})
                 data && dispatch({type: OPEN_WINDOW, payload: "subscription_success"})

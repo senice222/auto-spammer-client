@@ -29,17 +29,17 @@ const initialState = {
     user_data: {
     },
     number_list: [
-        { id: 1, number: '+7 908 024 40 96' },
-        { id: 2, number: '+7 928 422 46 34' },
+        // { id: 1, number: '+7 908 024 40 96' },
+        // { id: 2, number: '+7 928 422 46 34' },
     ],
     news_list: [
         {
-        id: 4,
-        img: "https://i.pinimg.com/564x/84/fc/72/84fc72e52401849d8c7a53768d73c2f0.jpg",
-        title: "Обновление: появилось что-то новое",
-        subtitle: "Товарищи! рамки и место обучения кадров позволяет оценить значение направлений прогрессивного развития.",
-        layout: <div></div>,
-        date: '28 октября 2023 года'
+            id: 4,
+            img: "https://i.pinimg.com/564x/84/fc/72/84fc72e52401849d8c7a53768d73c2f0.jpg",
+            title: "Обновление: появилось что-то новое",
+            subtitle: "Товарищи! рамки и место обучения кадров позволяет оценить значение направлений прогрессивного развития.",
+            layout: <div></div>,
+            date: '28 октября 2023 года'
         }
     ],
 }
@@ -166,7 +166,7 @@ const noteReducer = (state = initialState, action) => {
             return {
                 ...state,
                 number_list: action.payload || []
-            }
+            };
         case SET_NUMBER_DATA:
             return {
                 ...state,

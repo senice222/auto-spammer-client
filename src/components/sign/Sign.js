@@ -34,6 +34,8 @@ const Sign = (isLogin, setOpen) => {
                         if (data[0]) {
                             setOpen()
                             dispatch({ type: LOGIN, payload: data[1] })
+                            localStorage.setItem("id", data[1].id)
+                            localStorage.setItem("balance", data[1].balance)
                             localStorage.setItem("username", data[1].username)
                             localStorage.setItem("password", data[1].password)
                             navigate('/panel')

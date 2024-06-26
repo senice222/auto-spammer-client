@@ -1,8 +1,5 @@
 import React from 'react';
 import style from "../../../styles/PaymentModal.module.scss";
-
-
-
 import usdt from '../../../assets/img/usdt.png'
 import ton from '../../../assets/img/ton_symbol.png'
 import btc from '../../../assets/img/btc.png'

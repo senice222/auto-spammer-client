@@ -1,19 +1,20 @@
-const DeleteNumberQuery = async (id, id_number, number) => {
+import $api from "./core/axios";
 
-    console.log(id)
-    console.log(id_number)
-    console.log(number)
-    
-    let fd = new FormData()
-    fd.append('id', id)
-    fd.append('id_phone', id_number)
-    fd.append('phone', number)
-    let response = await fetch('https://vm-c6638fea.na4u.ru/delete_phone', {
-        method: 'POST',
-        body: fd
-    })
-        .then((response) => response.json())
-    return response.result
-}
+const DeleteNumberQuery = async (id, id_number, number) => {
+    try {
+        const reqBody = {
+            id,
+            id_phone: id_number,
+            phone: number,
+        }
+
+        const { data } = await $api.post('delete_phone', reqBody);
+
+        return data.result;
+    } catch (error) {
+        console.error("Ошибка при выполнении запроса:", error);
+        throw error;
+    }
+};
 
 export default DeleteNumberQuery
