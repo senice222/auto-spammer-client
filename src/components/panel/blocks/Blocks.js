@@ -9,7 +9,7 @@ const Blocks = ({ number_data }) => {
         return types_mailing[+!number_data.number_data.type_mailing]
     }
 
-    const getQuintityMessages = () => number_data.number_data.messages.reduce(
+    const getQuintityMessages = () => number_data.number_data?.messages?.reduce(
         (acum, m) =>
             acum + (m.text ? 1 : 0)
         , 0)

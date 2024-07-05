@@ -57,6 +57,10 @@ html[data-theme="light"] {
     width: 12px;
   }
 
+  .signup, .signin {
+    margin-top: 15px;
+  }
+
   .textBlockk::-webkit-scrollbar-thumb {
     background-color: $color3;
     border-radius: 10px;
@@ -2555,16 +2559,38 @@ html[data-theme="dark"] {
       }
 
       @media (max-width: 500px) {
-        .window_block {
+        .window_blockl {
           height: 100% !important;
           width: 100% !important;
           display: flex;
           flex-direction: column;
-          align-items: center;
           padding-top: 100px !important;
+          padding: 0em 0 !important;
         }
       }
+      .window_blockl {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        padding: 1em 0;
+        background-color: $color2;
+        transform: translate(-50%, -50%);
+        height: fit-content;
+        border-radius: 5px;
 
+        &_header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 1em 1em 1em;
+          padding-top: 10px;
+          img {
+            cursor: pointer;
+            margin-top: 5px;
+            width: 25px;
+          }
+        }
+      }
       .window_block {
         position: absolute;
         left: 50%;
@@ -2580,9 +2606,10 @@ html[data-theme="dark"] {
           justify-content: space-between;
           align-items: center;
           margin: 0 1em 1em 1em;
-
+          padding-top: 10px;
           img {
             cursor: pointer;
+            margin-top: 5px;
             width: 25px;
           }
         }

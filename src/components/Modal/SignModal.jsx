@@ -6,7 +6,7 @@ const SignModal = ({isOpened, setOpened}) => {
     if (isOpened) {
         return (
             <div onClick={setOpened} className={'window_container'}>
-                <div onClick={(e) => e.stopPropagation()} className={'window_block'}>
+                <div onClick={(e) => e.stopPropagation()}>
                    <SignUp setOpened={setOpened}/>
                 </div>
             </div>

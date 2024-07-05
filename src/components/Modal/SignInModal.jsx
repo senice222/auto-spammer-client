@@ -8,7 +8,7 @@ const SignInModal = ({isOpened, setOpened}) => {
     if (isOpened) {
         return (
             <div onClick={setOpened} className={'window_container'}>
-                <div onClick={(e) => e.stopPropagation()} className={'window_block'}>
+                <div onClick={(e) => e.stopPropagation()}>
                     <div className={"crossCloseModal"} onClick={() => setOpened(false)}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                             <defs>
