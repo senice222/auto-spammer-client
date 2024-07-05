@@ -20,10 +20,10 @@ const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
     }
     
     const number_data = useSelector(s => s.app.number_data)
-    // const number_data = useSelector(s => s.app.number_data)
     const user_data = useSelector(n => n.app.user_data)
 
-    const editModHandler = async () => {
+    const editModHandler = async (e) => {
+        e.stopPropagation();
         if (edit_mod) {
             if (edit_mod === m.id) {
                 await ChangeFields(getTitle(), m.text, number_data.number, user_data.id)
@@ -44,7 +44,7 @@ const TitleBlock = ({edit_mod, setEditMod, index, m}) => {
     return (
         <div className="title_block">
             <h3>Сообщение #{index}</h3>
-            {getTextBut() === "Сохранить" && <div className="change_but" onClick={editModHandler}>
+            {getTextBut() === "Сохранить" && <div className="change_but" onClick={(e) => editModHandler(e)}>
                 {getTextBut()}
             </div>}
         </div>

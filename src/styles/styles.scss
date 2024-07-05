@@ -1,16 +1,23 @@
 @keyframes ant-notification-notice-wrapper {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+ 0% {
+   opacity: 1;
+ }
+ 90% {
+   opacity: 1;
+ }
+ 100% {
+   opacity: 0;
+ }
 }
+
+
+
 .ant-notification-notice-wrapper {
-  animation: fadeout 1.9s forwards !important;
-  div {
-    border-radius: 5px;
-  }
+ animation: fadeout 3.5s forwards !important;
+
+ div {
+   border-radius: 5px;
+ }
 }
 
 .hiddd {
@@ -19,6 +26,21 @@
 
 body {
   overflow-x: hidden;
+}
+
+
+.panel_container {
+  width: 50%;
+}
+@media (max-width: 1330px) {
+  .panel_container {
+    width: 80%;
+  }
+}
+@media (max-width: 1000px) {
+  .panel_container {
+    width: 90% !important;
+  }
 }
 
 html[data-theme="light"] {
@@ -31,14 +53,86 @@ html[data-theme="light"] {
   $color7: #2f2f2f;
   $color8: #adaccb;
 
+  .textBlockk::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .textBlockk::-webkit-scrollbar-thumb {
+    background-color: $color3;
+    border-radius: 10px;
+    border: 3px solid $color5;
+    transition: .2s;
+  }
+
+  .textBlockk::-webkit-scrollbar-thumb:active {
+    background-color: $color4;
+  }
+
+  .textBlockk::-webkit-scrollbar-track {
+    background-color: $color5;
+    border-radius: 10px;
+  }
+
+  .crossCloseModal {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+
+    svg {
+      cursor: pointer;
+      width: 32px;
+      margin-right: 15px;
+    }
+  }
+
+  .regText {
+    text-align: center;
+    font-size: 14px;
+
+    a {
+      cursor: pointer;
+      color: #464646;
+    }
+  }
+
+  .alreadyAcc {
+    font-size: 14px;
+    text-align: center;
+
+    span {
+      cursor: pointer;
+      color: #464646;
+    }
+  }
+
+  .noAccount {
+    span {
+      color: white;
+    }
+  }
+
+  .divtextt {
+    display: grid;
+    margin-top: 10vh;
+  }
+
+  .container .main_containerr {
+    position: relative;
+    display: grid;
+    max-width: 1000px;
+  }
+
   .ant-notification-notice-wrapper {
-    animation: fadeout 1.9s forwards !important;
+    //animation: fadeout 1.9s forwards !important;
     background-color: $color1 !important;
     color: black;
+
     div {
       border-radius: 5px;
     }
   }
+
   .methods1 {
     div {
       background: $color5 !important;
@@ -51,9 +145,9 @@ html[data-theme="light"] {
     }
   }
 
-  // .ant-notification-notice-wrapper {
-  //   background: black !important;
-  // }
+   .ant-notification-notice-wrapper {
+     //background: black !important;
+   }
 
   @keyframes fadeout {
     0% {
@@ -158,8 +252,10 @@ html[data-theme="light"] {
   }
 
   .textBlockk {
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     font-size: 16px;
+    white-space: nowrap;
     background-color: $color5;
     padding: 5px 10px;
     border-radius: 5px;
@@ -520,7 +616,7 @@ html[data-theme="light"] {
         background-color: $color2;
         border-radius: 5px;
         width: 300px;
-        margin: 50px 0;
+        //margin: 50px 0;
         color: $color6;
 
         .title_style {
@@ -874,8 +970,9 @@ html[data-theme="light"] {
           flex-wrap: wrap;
           height: fit-content;
           width: 360px;
-          min-height: 50px;
           box-sizing: border-box;
+          min-height: 50px;
+          overflow-y: auto;
           display: grid;
           gap: 1em;
           padding: 1em 1em;
@@ -1556,8 +1653,74 @@ html[data-theme="dark"] {
   $color6: #7f91a4;
   $color7: #d0d0df;
   $color8: #52cb5f;
+
+  .textBlockk::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .textBlockk::-webkit-scrollbar-thumb {
+    background-color: $color3;
+    border-radius: 10px;
+    border: 3px solid $color5;
+    transition: .2s;
+  }
+
+  .textBlockk::-webkit-scrollbar-thumb:active {
+    background-color: $color4;
+  }
+
+  .textBlockk::-webkit-scrollbar-track {
+    background-color: $color5;
+    border-radius: 10px;
+  }
+
+  .crossCloseModal {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+
+    svg {
+      cursor: pointer;
+      width: 32px;
+      margin-right: 15px;
+    }
+  }
+
+  .alreadyAcc {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+
+    span {
+      color: #cbcbcb;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .noAccount {
+    font-size: 14px;
+
+    span {
+      color: #cbcbcb;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .regText {
+    text-align: center;
+    font-size: 14px;
+
+    a {
+      color: #cbcbcb;
+      text-decoration: underline;
+    }
+  }
+
   .ant-notification-notice-wrapper {
-    animation: fadeout 1.9s forwards !important;
+    //animation: fadeout 1.9s forwards !important;
     background-color: $color2 !important;
 
     div {
@@ -1565,6 +1728,7 @@ html[data-theme="dark"] {
       color: $color7 !important;
     }
   }
+
   .divtextt {
     display: grid;
     margin-top: 10vh;
@@ -1900,6 +2064,7 @@ html[data-theme="dark"] {
         font-size: 21px;
         text-align: center;
       }
+
       p {
         font-size: 15px;
         //text-align: center;
@@ -2071,8 +2236,8 @@ html[data-theme="dark"] {
         padding: 2em 3em;
         background-color: $color2;
         border-radius: 5px;
-        width: 300px;
-        margin: 50px 0;
+        width: 340px;
+        //margin: 50px 0;
         color: $color6;
 
         .title_style {
@@ -2098,7 +2263,7 @@ html[data-theme="dark"] {
         }
 
         .control_block {
-          margin-top: 1em;
+          //margin-top: 1em;
           display: grid;
 
           .error {
@@ -2389,6 +2554,17 @@ html[data-theme="dark"] {
         background-color: #0003;
       }
 
+      @media (max-width: 500px) {
+        .window_block {
+          height: 100% !important;
+          width: 100% !important;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 100px !important;
+        }
+      }
+
       .window_block {
         position: absolute;
         left: 50%;
@@ -2430,8 +2606,9 @@ html[data-theme="dark"] {
           display: grid;
           gap: 1em;
           padding: 1em 1em;
-          overflow-y: auto;
+          //height: 400px;
           min-height: 50px;
+          overflow-y: auto;
           padding-bottom: 0;
 
           &::-webkit-scrollbar {
@@ -2842,9 +3019,9 @@ html[data-theme="dark"] {
     .open_menu {
       opacity: 1 !important;
     }
-  .logo {
-    //margin: 0;
-  }
+    .logo {
+      //margin: 0;
+    }
     .menu {
       @include free_block();
       display: grid !important;
@@ -2888,6 +3065,7 @@ html[data-theme="dark"] {
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        margin-top: 15px;
       }
     }
   }
@@ -3213,6 +3391,7 @@ hr {
     font-size: 36px !important;
   }
 }
+
 .window_container {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }

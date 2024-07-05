@@ -15,7 +15,7 @@ const NumberTab = ({ id, current_number_id, number }) => {
             dispatch({ type: SET_NUMBER_DATA, payload: data })
             notification.success({
                 message: 'Вы успешно выбрали номер телефона.',
-                duration: 1.5,
+                duration: 4,
                 style: {
                     fontFamily: "Montserrat-Medium",
                 }

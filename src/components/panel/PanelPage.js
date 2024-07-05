@@ -26,6 +26,7 @@ const PanelPage = () => {
                 try {
                     const result = await GetPhones(id);
                     const phonesData = result?.phones_data;
+                    console.log(result)
                     if (phonesData && phonesData.length > 0) {
                         const transformedData = phonesData.map(item => ({
                             id: item.id_phone,

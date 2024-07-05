@@ -30,10 +30,6 @@ const Blocks = ({ number_data }) => {
         { type: 6, title: "Автосписание", value: "о", param: number_data.number_data.autodebit },
     ]
 
-
-    // useEffect(() => {
-    // }, [number_data.range_interval])
-
     return <div className='tel_info'>
         {content_blocks.map((cb, i) => cb.type === 1
             ? <ParamMessagesBlock key={i} cb={cb} />

@@ -7,6 +7,7 @@ const TextBlock = ({m, edit_mod, setEditMod}) => {
     const dispatch = useDispatch()
     const textareaRef = useRef(null)
     const [value, setValue] = useState(m.text)
+    const maxChars = 1000
     const [heights, setHeights] = useState(() => {
         const savedHeights = localStorage.getItem('textareaHeights');
         return savedHeights ? JSON.parse(savedHeights) : {}
@@ -27,11 +28,12 @@ const TextBlock = ({m, edit_mod, setEditMod}) => {
         adjustTextareaHeight()
     }, [value])
 
-    const editModHandler = async () => {
+    const editModHandler = async (e) => {
+        e.stopPropagation()
         setEditMod(m.id)
-        console.log(m)
     }
     const changeText = (e) => {
+        e.stopPropagation()
         const newValue = e.target.value
         setValue(newValue)
         dispatch({
@@ -45,47 +47,34 @@ const TextBlock = ({m, edit_mod, setEditMod}) => {
     };
 
     const handleKeyDown = (e) => {
-        const maxLines = isMobile() ? 5 : 7;
-        const maxCols = 50;
-
+        e.stopPropagation();
         const text = e.target.value;
-        const lines = text.split("\n");
-        const currentLine = text.substr(0, e.target.selectionStart).split("\n").length;
 
-        if (e.key === 'Enter' && !e.shiftKey) {
-            if (lines.length >= maxLines) {
-                e.preventDefault();
-            }
-        } else {
-            if (lines[currentLine - 1].length >= maxCols) {
-                if (lines.length <= maxLines - 1) {
-                    setValue((prev) => prev + '\n');
-                } else {
-                    e.preventDefault();
-                }
-            }
+        if (text.length >= maxChars && e.key !== 'Backspace') {
+            e.preventDefault();
         }
     };
 
     const adjustTextareaHeight = () => {
         if (textareaRef.current) {
-            textareaRef.current.style.height = 'auto';
-            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-
-            setHeights((prevHeights) => {
-                const newHeights = { ...prevHeights, [m.id]: textareaRef.current.scrollHeight };
-                localStorage.setItem('textareaHeights', JSON.stringify(newHeights));
-                return newHeights;
-            });
+            textareaRef.current.style.height = '150px';
+            textareaRef.current.style.overflowY = 'auto';
         }
     };
 
+    useEffect(() => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = '150px';
+            textareaRef.current.style.overflowY = 'auto';
+        }
+    }, [edit_mod]);
+
+
     return (
         edit_mod === m.id ? (
-            <div className={"svgDiv"}>
+            <div className={"svgDiv"} onClick={(e) => e.stopPropagation()}>
                 <textarea
                     className="textBlockk"
-                    style={{ padding: "10px 10px" }}
                     value={value}
                     ref={textareaRef}
                     onKeyDown={handleKeyDown}
@@ -94,7 +83,7 @@ const TextBlock = ({m, edit_mod, setEditMod}) => {
                 />
             </div>
             ) :
-            <div onClick={editModHandler} className={"svgDiv"} style={{display: "flex"}}>
+            <div onClick={(e) => editModHandler(e)} className={"svgDiv"} style={{display: "flex"}}>
                 <div className="text_block">
                     <p>{m.text || "Пусто"}</p>
                 </div>

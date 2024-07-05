@@ -6,6 +6,7 @@ import TextBlock from "./TextBlock"
 import HeaderMessages from "./HeaderMessages"
 import UpdateData from "../handlers/UpdateData"
 import Loading from "../../assets/Loading"
+import { notification } from "antd"
 
 const MessagesPage = () => {
     const location = useLocation()
@@ -29,7 +30,16 @@ const MessagesPage = () => {
             <HeaderMessages />
             <div className="block_messages">
                 {number_data.messages.map((m, i) =>
-                    <div key={i} className="block_messages_item">
+                    <div key={i} className="block_messages_item" onClick={() => {
+                        notification.success({
+                            message: 'Вы успешно изменили сообщение.',
+                            duration: 2,
+                            style: {
+                                fontFamily: "Montserrat-Medium",
+                            }
+                        });
+                        setEditMod(false)
+                    }}>
                         <TitleBlock edit_mod={edit_mod} setEditMod={setEditMod} index={i + 1} m={m} />
                         <TextBlock m={m} edit_mod={edit_mod} setEditMod={setEditMod} />
                     </div>)}

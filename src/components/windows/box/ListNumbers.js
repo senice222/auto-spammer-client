@@ -14,7 +14,7 @@ const ListNumbers = () => {
         dispatch({type: CLOSE_WINDOW})
     }
     console.log(number_list)
-    return <div className="window_content">
+    return <div style={{height: '500px'}} className="window_content">
         {number_list.map(n => <p key={n.id} onClick={() => selectNumber(n.id, n.number)}>{n.number}</p>)}
         </div>
 }
