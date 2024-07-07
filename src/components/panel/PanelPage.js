@@ -19,6 +19,8 @@ const PanelPage = () => {
     // const user_list = useSelector(n => n.app.user_list)
     const id = localStorage.getItem("id")
     const openAdder = () => dispatch({ type: OPEN_WINDOW, payload: "add_account" })
+    const topUp = () => dispatch({ type: OPEN_WINDOW, payload: "payment" })
+    const isEnough = user_data.balance >= 50 ? openAdder : topUp
     const [numbers, setNumbers] = useState()
 
     useEffect(() => {
@@ -75,7 +77,7 @@ const PanelPage = () => {
                 </div>
                 : <div className='no_numbers'>
                     <p className='no_numbers_text'>Подключенных номеров пока что нет</p>
-                    <div className='add_number_but' onClick={openAdder}>Добавить номер</div>
+                    <div className='add_number_but' onClick={() => isEnough}>Добавить номер</div>
                 </div>}
         </div>
 }
