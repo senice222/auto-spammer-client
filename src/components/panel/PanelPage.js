@@ -16,6 +16,7 @@ const PanelPage = () => {
     const dispatch = useDispatch()
     const [isLoading, setLoading] = useState(true)
     const user_data = useSelector(n => n.app.user_data)
+    // const user_list = useSelector(n => n.app.user_list)
     const id = localStorage.getItem("id")
     const openAdder = () => dispatch({ type: OPEN_WINDOW, payload: "add_account" })
     const [numbers, setNumbers] = useState()
@@ -30,7 +31,9 @@ const PanelPage = () => {
                     if (phonesData && phonesData.length > 0) {
                         const transformedData = phonesData.map(item => ({
                             id: item.id_phone,
-                            phone: item.phone
+                            phone: item.phone,
+                            region: item.country_code,
+                            sub_active: item.sub_active
                         }));
                         dispatch({type: SET_PHONES, transformedData});
                         setNumbers(result.phones_data);

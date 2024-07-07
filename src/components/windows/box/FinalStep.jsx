@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from "../../../styles/PaymentModal.module.scss";
-import { Flex, Spin } from 'antd';
 
 const FinalStep = ({setAmount, setStep}) => {
 

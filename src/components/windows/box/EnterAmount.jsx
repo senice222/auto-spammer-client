@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import style from "../../../styles/PaymentModal.module.scss";
 import {useDispatch, useSelector} from "react-redux";
-import {CLOSE_WINDOW} from "../../../reducers/types";
-import axios from "axios";
 import $api from "../../queries/core/axios";
 
 const EnterAmount = ({type, setAmount, setStep}) => {
     const [value, setValue] = useState("")
     const [error, setError] = useState("");
-    const dispatch = useDispatch()
     const user_data = useSelector(p => p.app.user_data)
 
     const handleInputChange = (e) => {
@@ -21,7 +18,6 @@ const EnterAmount = ({type, setAmount, setStep}) => {
 
     const handleNextClick = async () => {
         const amount = +value;
-        console.log(type);
 
         if (type === "Payok") {
             if (amount < 100) {

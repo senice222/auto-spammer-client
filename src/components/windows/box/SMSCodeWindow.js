@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {CLOSE_WINDOW, OPEN_WINDOW, SET_PHONES} from "../../../reducers/types"
 import PhoneInput from 'react-phone-input-2'
@@ -7,7 +7,6 @@ import axios from "axios";
 import $api from "../../queries/core/axios";
 
 const SMSCodeWindow = () => {
-
     const dispatch = useDispatch()
     const [numValue, setNumValue] = useState('')
     const [codeValue, setCodeValue] = useState('')
@@ -66,7 +65,7 @@ const SMSCodeWindow = () => {
             if (numberContent === 0) {
                 try {
                     console.log(user_data)
-                    const {data} = await $api.post('send_code', {
+                    const {data} = await $api.post('phone/send_code ', {
                         id: user_data.id,
                         phone: `+${clean_number}`
                     });
@@ -81,7 +80,7 @@ const SMSCodeWindow = () => {
             }
 
             if (content.nextPage === 3) {
-                let {data} = await $api.post('/add_phone', {
+                let {data} = await $api.post('phone/add_phone', {
                     id: user_data.id,
                     phone: `+${clean_number}`,
                     code: codeValue,
@@ -112,13 +111,19 @@ const SMSCodeWindow = () => {
                 placeholder={content.placeholder}
                 onChange={e => content.setValue(e)}
                 buttonClass="but_select_number_country"
-                country='ru'/>
+                country='ru'
+                inputProps={{
+                    autoFocus: true
+                }}
+            />
             : <input
                 maxLength={content.maxValue}
                 type={content.typeInput}
                 placeholder={content.placeholder}
                 value={content.value}
-                onChange={e => content.setValue(e.target.value)}/>}
+                onChange={e => content.setValue(e.target.value)}
+            />
+        }
         {errorText && <div className="error_block">{errorText}</div>}
         <div className="but_next" onClick={getCodeHandler}>{content.textBut}</div>
     </div>
