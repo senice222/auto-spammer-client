@@ -6,7 +6,6 @@ const GetUser = async (id) => {
             id
         });
 
-        console.log(data);
         return data.result;
     } catch (error) {
         console.error("Ошибка при выполнении запроса:", error);

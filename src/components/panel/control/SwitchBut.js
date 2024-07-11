@@ -12,7 +12,12 @@ const SwitchBut = ({status, sub, phone}) => {
     const getColor = () => {
         return {backgroundColor: !status ? "#5B9872" : "#985B72"}
     }
-    const getStatus = () => sub ? status ? "Остановать" : "Запустить" : "Оплатить"
+    const getStatus = () => {
+        if (user_data.balance < 50) {
+            return "Оплатить";
+        }
+        return sub ? (status ? "Остановить" : "Запустить") : "Оплатить";
+    };
     const user_data = useSelector(p => p.app.user_data)
 
 
@@ -28,7 +33,7 @@ const SwitchBut = ({status, sub, phone}) => {
             ChangeFields("status_work", +!number_data.status, number_data.number, user_data.id)
                 .then(data => data && dispatch({type: TOGGLE_BOT}))
         } else {
-            const {data} = await $api.put('/buy_subscription', {id: user_data.id, phone,})
+            const {data} = await $api.put('/buy_subscription', {id: user_data.id, phone})
             console.log(data)
         }
     }

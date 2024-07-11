@@ -8,7 +8,7 @@ const DeleteNumberQuery = async (id, id_number, number) => {
             phone: number,
         }
 
-        const { data } = await $api.post('delete_phone', reqBody);
+        const { data } = await $api.delete('delete_phone', reqBody);
 
         return data.result;
     } catch (error) {

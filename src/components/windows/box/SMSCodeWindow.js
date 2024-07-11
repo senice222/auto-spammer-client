@@ -65,12 +65,13 @@ const SMSCodeWindow = () => {
             if (numberContent === 0) {
                 try {
                     console.log(user_data)
-                    const {data} = await $api.post('phone/send_code ', {
+                    const {data} = await $api.post('phone/send_code', {
                         id: user_data.id,
                         phone: `+${clean_number}`
                     });
                     if (data.result) {
                         setNumberContent(1);
+                        setNumberContent(content.nextPage)
                     } else {
                         setErrorText("Ошибка при отправке кода подтверждения");
                     }
@@ -79,7 +80,25 @@ const SMSCodeWindow = () => {
                 }
             }
 
-            if (content.nextPage === 3) {
+            if (numberContent === 1) {
+                let {data} = await $api.post('phone/add_phone', {
+                    id: user_data.id,
+                    phone: `+${clean_number}`,
+                    code: codeValue,
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (data.error === "CODE_INVALID") {
+                    setErrorText("Вы ввели неверный код.")
+                }
+                if (data.error === "REQUIRED_2FA_PASSWORD") {
+                    setNumberContent(content.nextPage)
+                }
+            }
+
+            if (numberContent === 2) {
                 let {data} = await $api.post('phone/add_phone', {
                     id: user_data.id,
                     phone: `+${clean_number}`,
@@ -90,14 +109,15 @@ const SMSCodeWindow = () => {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log(data)
+                if (!data.result) {
+                    setErrorText("Вы ввели неверный пароль.")
+                }
                 if (data.result) {
                     dispatch({type: SET_PHONES, payload: {id: user_data.id, phone: numValue}})
                     dispatch({type: CLOSE_WINDOW})
                     dispatch({type: OPEN_WINDOW, payload: 'add_success'})
                 }
             }
-            setNumberContent(content.nextPage)
         } else setErrorText(content.error)
     }
 

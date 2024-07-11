@@ -52,7 +52,15 @@ html[data-theme="light"] {
   $color6: black;
   $color7: #2f2f2f;
   $color8: #adaccb;
-
+  .knopo4ka {
+    color: black !important;
+  }
+  .ant-dropdown-menu {
+    background-color: $color2 !important; /* Replace with your desired background color */
+    .ant-dropdown-menu-item:hover {
+      background-color: $color5;
+    }
+  }
   .textBlockk::-webkit-scrollbar {
     width: 12px;
   }
@@ -1001,6 +1009,9 @@ html[data-theme="light"] {
             cursor: pointer;
             transition: 0.2s;
             font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             height: fit-content;
 
             &:hover {
@@ -1657,6 +1668,18 @@ html[data-theme="dark"] {
   $color6: #7f91a4;
   $color7: #d0d0df;
   $color8: #52cb5f;
+
+  .ant-dropdown-menu {
+    background-color: $color2 !important; /* Replace with your desired background color */
+    .ant-dropdown-menu-item:hover {
+      background-color: $color5;
+    }
+  }
+
+  /* Additional styles as needed */
+  .custom-dropdown .ant-dropdown-menu-item {
+    color: $color7; /* Replace with your desired text color */
+  }
 
   .textBlockk::-webkit-scrollbar {
     width: 12px;
@@ -2655,6 +2678,9 @@ html[data-theme="dark"] {
             margin-bottom: 2px;
             cursor: pointer;
             transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 14px;
             height: fit-content;
 
@@ -3421,4 +3447,16 @@ hr {
 
 .window_container {
   background-color: rgba(0, 0, 0, 0.2);
+}
+.div1337228666 {
+  display: flex;
+}
+.knopo4ka {
+  font-size: 18px;
+  color: white;
+  width: 40px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
