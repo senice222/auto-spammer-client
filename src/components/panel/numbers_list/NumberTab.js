@@ -7,24 +7,25 @@ import { notification } from "antd";
 const NumberTab = ({ id, current_number_id, number }) => {
     const dispatch = useDispatch()
     const user_data = useSelector(u => u.app.user_data)
-    const getClass = () => 'numbers_list_tab' + (number_data.number === number ? ' active_tab' : "")
     const number_data = useSelector(s => s.app.number_data)
+    const getClass = () => 'numbers_list_tab' + (number_data.number === number ? ' active_tab' : "")
 
     const selectNumber = () => GetFirstPhone(user_data.id, id).then(data => {
-            localStorage.setItem('current_tab', id)
-            dispatch({ type: SET_NUMBER_DATA, payload: data })
-            notification.success({
-                message: 'Вы успешно выбрали номер телефона.',
-                duration: 4,
-                style: {
-                    fontFamily: "Montserrat-Medium",
-                }
-            });
+        localStorage.setItem('current_tab', id)
+        dispatch({ type: SET_NUMBER_DATA, payload: data })
+        notification.success({
+            message: 'Вы успешно выбрали номер телефона.',
+            duration: 4,
+            style: {
+                fontFamily: "Montserrat-Medium",
+            }
         })
+    })
 
-    return <div className={getClass()} onClick={selectNumber}>
-        <p><GetNumber n={number} /></p>
-    </div>
+    return (
+        <div className={getClass()} onClick={selectNumber}>
+            <p><GetNumber n={number} /></p>
+        </div>
+    )
 }
-
 export default NumberTab

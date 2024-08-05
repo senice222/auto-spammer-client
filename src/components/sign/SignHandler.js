@@ -4,7 +4,7 @@ const SignHandler = async (username, password, api_link) => {
     const fd = new FormData();
     fd.append('username', username);
     fd.append('password', password);
-
+    console.log(username, password)
     try {
         const {data} = await $api.post(`${api_link}`, fd, {
             headers: {

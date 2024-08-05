@@ -4,13 +4,13 @@ import {CLOSE_WINDOW, SELECT_NUMBER_FROM_LIST, SET_NUMBER_DATA} from '../../../r
 import GetFirstPhone from '../../queries/GetFirstPhone';
 import Flag from 'react-world-flags';
 import {Dropdown} from "antd";
+import {GetNumber} from "../../panel/GetNumber";
 
 
 const ListNumbers = () => {
     const number_list = useSelector(state => state.app.number_list);
     const user_data = useSelector(state => state.app.user_data);
     const dispatch = useDispatch();
-    console.log(number_list)
 
     const selectNumber = (id, number, region, sub_active) => {
         GetFirstPhone(user_data.id, id).then(data => dispatch({ type: SET_NUMBER_DATA, payload: data }));
@@ -40,7 +40,7 @@ const ListNumbers = () => {
 
     const renderFlag = (region) => {
         if (region) {
-            return <div style={{width: '35px', height: 'auto', margin: '0 7px'}}>
+            return <div style={{width: '25px', height: 'auto', margin: '0 7px'}}>
                 <Flag code={region} />
             </div>
         }
@@ -58,7 +58,7 @@ const ListNumbers = () => {
                     {groupedNumbers[region].map(n => (
                         <p key={n.id} onClick={() => selectNumber(n.id, n.number, n.region, n.sub_active)}>
                             <div className={"div1337228666"}>
-                                {renderFlag(n.region)} {n.number}
+                                {renderFlag(n.region)} <GetNumber n={n.number}/>
                             </div>
                             <div style={{display: 'flex', alignItems: 'center'}}>
                                 <Dropdown

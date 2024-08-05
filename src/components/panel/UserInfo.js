@@ -1,22 +1,32 @@
-import { useDispatch } from "react-redux"
-import GetIcon from "../../assets/GetIcon"
-import { OPEN_WINDOW } from "../../reducers/types"
-import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import GetIcon from "../../assets/GetIcon";
+import { OPEN_WINDOW } from "../../reducers/types";
+import { useEffect, useState } from "react";
 
 const UserInfo = ({ nickname, balance }) => {
-    const dispatch = useDispatch(),
-        [new_balance, setNewBalance] = useState(0)
-
+    const dispatch = useDispatch();
+    const user_data = useSelector(p => p.app.user_data);
+    const [new_balance, setNewBalance] = useState(balance);
+    const [prevBalance, setPrevBalance] = useState(
+        parseInt(localStorage.getItem('prevBalance'))
+    );
     useEffect(() => {
-        let count = 0,
-        counter = setInterval(() => {
-            if (count < balance){
-                count++
-            setNewBalance(count)
-            }else clearInterval(counter)
-        }, 1000 / balance);
-
-    }, [balance])
+        if (balance !== prevBalance) {
+            let count = prevBalance;
+            const increment = balance > prevBalance ? 1 : -1;
+            const counter = setInterval(() => {
+                count += increment;
+                setNewBalance(count);
+                if ((increment === 1 && count >= balance) || (increment === -1 && count <= balance)) {
+                    clearInterval(counter);
+                    localStorage.setItem('prevBalance', balance);
+                    setPrevBalance(balance);
+                }
+            }, 1000 / Math.abs(balance - prevBalance));
+        } else {
+            setNewBalance(balance);
+        }
+    }, [balance, prevBalance]);
 
     return (
         <div className="userinfo">
@@ -28,7 +38,7 @@ const UserInfo = ({ nickname, balance }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default UserInfo
+export default UserInfo;

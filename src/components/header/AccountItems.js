@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import {useTheme} from "../../hooks/useTheme";
+import $api from "../queries/core/axios";
 
 const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) => {
     const {theme, setTheme} = useTheme()
@@ -12,12 +13,24 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) =>
     const token = localStorage.getItem("refresh")
     const username = localStorage.getItem("username")
 
-    const logoutHandler = () => {
-        setSwitchMenu(!switchMenu)
-        localStorage.clear()
-        // navigate('/signin')
-        dispatch({ type: LOGOUT })
-    }
+    const logoutHandler = async () => {
+        setSwitchMenu(!switchMenu);
+
+        const refreshToken = localStorage.getItem('refresh');
+        try {
+            const response = await $api.delete(`/logout`, { refresh_token: refreshToken });
+
+            if (response.status === 200) {
+                localStorage.clear();
+                dispatch({ type: LOGOUT });
+                navigate('/');
+            } else {
+                console.error('Logout failed');
+            }
+        } catch (error) {
+            console.error('An error occurred while logging out:', error);
+        }
+    };
 
     const handleTheme = () => {
         if (theme === 'dark') {

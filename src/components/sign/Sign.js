@@ -34,6 +34,7 @@ const Sign = (isLogin, setOpen, setType) => {
                     SignHandler(username, password, content.api_link).then((data) => {
                         if (data[0]) {
                             setOpen()
+                            console.log(data)
                             dispatch({ type: LOGIN, payload: data[1] })
                             localStorage.setItem("id", data[1].id)
                             localStorage.setItem("balance", data[1].balance)

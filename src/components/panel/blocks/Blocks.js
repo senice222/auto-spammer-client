@@ -3,7 +3,6 @@ import ParamBlock from "./ParamBlock"
 import ParamMessagesBlock from "./ParamMessagesBlock"
 
 const Blocks = ({ number_data }) => {
-    console.log(number_data)
     const getTypeMailing = () => {
         const types_mailing = ["Все группы"]
         return types_mailing[+!number_data.type_mailing]

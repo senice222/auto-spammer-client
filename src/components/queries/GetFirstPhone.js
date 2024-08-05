@@ -9,6 +9,7 @@ const GetFirstPhone = async (id_user, id_phone) => {
                     id: data.result.id,
                     number: data.result.phone_data.phone,
                     time_sub: data.result.phone_data.sub_date,
+                    sub_active: data.result.phone_data.sub_active,
                     status: data.result.phone_data.status_work,
                     type_mailing: data.result.phone_data.type_spam,
                     interval: data.result.phone_data.interval_messages,

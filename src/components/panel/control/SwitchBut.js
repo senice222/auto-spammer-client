@@ -4,10 +4,12 @@ import ChangeFields from "../../queries/ChangeFields"
 import axios from "axios";
 import $api from "../../queries/core/axios";
 import BuySubscription from "../../queries/BuySubscription";
+import {notification} from "antd";
 
-const SwitchBut = ({status, sub, phone}) => {
+const SwitchBut = ({status, phone}) => {
     const dispatch = useDispatch()
     const number_data = useSelector(s => s.app.number_data)
+    const sub = number_data.sub_active
 
     const getColor = () => {
         return {backgroundColor: !status ? "#5B9872" : "#985B72"}
@@ -20,7 +22,6 @@ const SwitchBut = ({status, sub, phone}) => {
     };
     const user_data = useSelector(p => p.app.user_data)
 
-
     const toggleHandler = async () => {
         if (getStatus() === "Оплатить") {
             if (user_data.balance >= 50) {
@@ -30,8 +31,26 @@ const SwitchBut = ({status, sub, phone}) => {
             }
         }
         if (sub) {
-            ChangeFields("status_work", +!number_data.status, number_data.number, user_data.id)
-                .then(data => data && dispatch({type: TOGGLE_BOT}))
+            try {
+                const {data} = await $api.put('/update_mailing', {
+                    id: number_data.id,
+                    phone: number_data.number,
+                    status: !number_data.status,
+                    mode: !number_data.answerphone ? 'mailing' : 'autorespond'
+                });
+                if (data) {
+                    dispatch({ type: TOGGLE_BOT });
+                }
+            } catch (error) {
+                console.error('Error updating mailing or autoresponder:', error);
+                notification.error({
+                    message: error.response.data.error,
+                    duration: 2,
+                    style: {
+                        fontFamily: "Montserrat-Medium",
+                    }
+                })
+            }
         } else {
             const {data} = await $api.put('/buy_subscription', {id: user_data.id, phone})
             console.log(data)

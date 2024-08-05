@@ -20,7 +20,7 @@ const PanelPage = () => {
     const id = localStorage.getItem("id")
     const openAdder = () => dispatch({ type: OPEN_WINDOW, payload: "add_account" })
     const topUp = () => dispatch({ type: OPEN_WINDOW, payload: "payment" })
-    const isEnough = user_data.balance >= 50 ? openAdder : topUp
+    const isEnough = user_data.balance <= 50 ? topUp : openAdder
     const [numbers, setNumbers] = useState()
 
     useEffect(() => {
