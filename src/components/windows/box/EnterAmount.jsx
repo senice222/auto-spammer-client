@@ -3,7 +3,7 @@ import style from "../../../styles/PaymentModal.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import $api from "../../queries/core/axios";
 
-const EnterAmount = ({type, setAmount, setStep}) => {
+const EnterAmount = ({type, crypto, setAmount, setStep}) => {
     const [value, setValue] = useState("")
     const [error, setError] = useState("");
     const user_data = useSelector(p => p.app.user_data)
@@ -26,7 +26,7 @@ const EnterAmount = ({type, setAmount, setStep}) => {
                 setError("");
                 setAmount(amount);
                 setStep(3);
-                const {data} = await $api.post('/add_balance_aaio', {id: user_data.id, amount: amount})
+                const {data} = await $api.post('/add_balance_aaio', {id: user_data.id, amount})
                 if (data?.result) {
                     window.location.replace(data.result)
                 } else {
@@ -36,7 +36,12 @@ const EnterAmount = ({type, setAmount, setStep}) => {
         } else {
             setError("");
             setAmount(amount);
-            console.log(1)
+            const {data} = await $api.post('/add_balance_crypto', {id: user_data.id, amount, asset: crypto})
+            if (data?.result) {
+                window.location.replace(data.result)
+            } else {
+                setError(data?.error)
+            }
             setStep(3);
         }
     };

@@ -38,7 +38,7 @@ const WindowControl = () => {
         0: <PaymentWindow setStep={setStep} setType={setType}/>,
         1: type === 'Cryptobot' ? <SelectCrypto setStep={setStep} setCrypto={setCrypto}/> :
             <EnterAmount type={type} setStep={setStep} setAmount={setAmount}/>,
-        2: type === 'Cryptobot' ? <EnterAmount type={type} setStep={setStep} setAmount={setAmount}/> : null,
+        2: type === 'Cryptobot' ? <EnterAmount type={type} crypto={crypto} setStep={setStep} setAmount={setAmount}/> : null,
         3: <FinalStep type={type} amount={amount} crypto={crypto}/>
     };
 
