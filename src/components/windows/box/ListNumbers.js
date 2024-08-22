@@ -1,15 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {CLOSE_WINDOW, SELECT_NUMBER_FROM_LIST, SET_NUMBER_DATA} from '../../../reducers/types';
+import {
+    CLOSE_WINDOW,
+    DELETE_FROM_NUMBER_LIST,
+    DELETE_NUMBER,
+    SELECT_NUMBER_FROM_LIST,
+    SET_NUMBER_DATA
+} from '../../../reducers/types';
 import GetFirstPhone from '../../queries/GetFirstPhone';
 import Flag from 'react-world-flags';
-import {Dropdown} from "antd";
+import {Dropdown, notification} from "antd";
 import {GetNumber} from "../../panel/GetNumber";
+import DeleteNumberQuery from "../../queries/DeleteNumberQuery";
+import UpdateData from "../../handlers/UpdateData";
 
 
 const ListNumbers = () => {
     const number_list = useSelector(state => state.app.number_list);
     const user_data = useSelector(state => state.app.user_data);
+    const [isOpened, setOpened] = useState(false)
+    const [activePhone, setActivePhone] = useState(false)
+
+
     const dispatch = useDispatch();
 
     const selectNumber = (id, number, region, sub_active) => {
@@ -50,8 +62,41 @@ const ListNumbers = () => {
             width: '100%', height: '23px'}}></div>
         </div>
     };
-
+    const deleteNumber = (id) => {
+        setActivePhone(id)
+        console.log(id)
+        setOpened(true)
+    }
+    const DeleteNumber = async () => {
+        await DeleteNumberQuery(user_data.id, activePhone.id, activePhone.number).then(data => {
+            localStorage.removeItem("current_tab")
+            dispatch({ type: DELETE_FROM_NUMBER_LIST, payload: activePhone.id })
+            dispatch({ type: DELETE_NUMBER })
+            UpdateData(user_data, dispatch)
+        })
+        notification.success({
+            message: 'Вы успешно удалили номер телефона.',
+            duration: 2.5,
+            style: {
+                fontFamily: "Montserrat-Medium",
+            }
+        });
+    }
     return (
+        <>
+            {isOpened ? <div className="window_block">
+                <div style={{width: '300px'}} className={'window_content'}>
+                    <h2>Вы уверены, что хотите удалить?</h2>
+                    <div className={'dvadiva'}>
+                        <p onClick={DeleteNumber} className={"div1337228666"}>
+                            Да
+                        </p>
+                        <p onClick={() => setOpened(false)} className={"div1337228666"}>
+                            Отмена
+                        </p>
+                    </div>
+                </div>
+            </div> : null}
         <div style={{ height: '500px' }} className="window_content">
             {Object.keys(groupedNumbers).map(region => (
                 <div key={region}>
@@ -67,7 +112,10 @@ const ListNumbers = () => {
                                         items : [{
                                             key: '1',
                                             label: (
-                                                <div>Удалить номер</div>
+                                                <div onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    deleteNumber(n)
+                                                }}>Удалить номер</div>
                                             ),
                                         },
                                             // {
@@ -82,13 +130,14 @@ const ListNumbers = () => {
                                 >
                                     <div onClick={(e) => e.stopPropagation()} className={'knopo4ka'}>⁝</div>
                                 </Dropdown>
-                                <div style={{width: '15px', height: '15px', borderRadius: '50%', backgroundColor: n.sub_active === 1 ? 'green' : 'red'}}></div>
+                                <div style={{width: '15px', height: '15px', borderRadius: '50%', backgroundColor: n.sub_active === 1 ? 'green' : '#9c1111'}}></div>
                             </div>
                         </p>
                     ))}
                 </div>
             ))}
         </div>
+        </>
     );
 };
 

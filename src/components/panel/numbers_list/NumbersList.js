@@ -1,19 +1,37 @@
 import AddBut from "./AddBut"
 import ListBut from "./ListBut"
 import NumberTab from "./NumberTab"
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import {useSelector} from "react-redux";
 
-const NumbersList = ({ current_number_id, numbers }) => {
-    const [updatedNumbers, setUpdatedNumbers] = useState(numbers)
 
+
+const NumbersList = ({ numbers }) => {
+    const [updatedNumbers, setUpdatedNumbers] = useState(numbers);
+    const [displayedNumbers, setDisplayedNumbers] = useState([]);
+    const current_number_id = useSelector(s => s.app.number_data).number
     const addNewNumber = (newNumber) => {
-        setUpdatedNumbers([newNumber, ...updatedNumbers])
+        setUpdatedNumbers([newNumber, ...updatedNumbers]);
     }
+    console.log(numbers)
+    console.log(current_number_id)
+    useEffect(() => {
+        const currentIndex = updatedNumbers.findIndex(n => n.phone === current_number_id);
+        let start = Math.max(0, currentIndex - 2);
+        let end = start + 5;
+
+        if (end > updatedNumbers.length) {
+            end = updatedNumbers.length;
+            start = Math.max(0, end - 5);
+        }
+
+        setDisplayedNumbers(updatedNumbers.slice(start, end));
+    }, [current_number_id, updatedNumbers]);
 
     return updatedNumbers && (
         <>
             <div className='numbers_list'>
-                {updatedNumbers.slice(0, 5).map(n => (
+                {displayedNumbers.map(n => (
                     <NumberTab key={n.id_phone} current_number_id={current_number_id} id={n.id_phone} number={n.phone} />
                 ))}
             </div>
@@ -25,4 +43,4 @@ const NumbersList = ({ current_number_id, numbers }) => {
     )
 }
 
-export default NumbersList
+export default NumbersList;

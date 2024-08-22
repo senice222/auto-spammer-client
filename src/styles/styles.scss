@@ -3459,3 +3459,37 @@ hr {
   justify-content: center;
   align-items: center;
 }
+.flexovik112 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  img {
+    position: fixed;
+    pointer-events: none;
+    opacity: .5;
+    width: 60vw;
+    left: 0;
+    top: 0;
+    height: auto;
+  }
+  .item2 {
+    margin-top: 20px;
+  }
+}
+.сustom_modal {
+  position: fixed;
+}
+.dvadiva {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+
+  .div1337228666 {
+    margin-left: 10px !important;
+  }
+}
+.window_content {
+  h2 {
+    text-align: center;
+  }
+}

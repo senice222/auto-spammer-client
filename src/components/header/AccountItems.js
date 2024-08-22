@@ -23,7 +23,7 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) =>
             if (response.status === 200) {
                 localStorage.clear();
                 dispatch({ type: LOGOUT });
-                navigate('/');
+                navigate('/#/');
             } else {
                 console.error('Logout failed');
             }

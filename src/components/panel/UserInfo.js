@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 const UserInfo = ({ nickname, balance }) => {
     const dispatch = useDispatch();
-    const user_data = useSelector(p => p.app.user_data);
     const [new_balance, setNewBalance] = useState(balance);
     const [prevBalance, setPrevBalance] = useState(
-        parseInt(localStorage.getItem('prevBalance'))
+        parseInt(localStorage.getItem('prevBalance')) || 0
     );
+
     useEffect(() => {
         if (balance !== prevBalance) {
             let count = prevBalance;

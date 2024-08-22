@@ -76,7 +76,7 @@ const PanelPage = () => {
                 </div>
                 : <div className='no_numbers'>
                     <p className='no_numbers_text'>Подключенных номеров пока что нет</p>
-                    <div className='add_number_but' onClick={() => isEnough}>Добавить номер</div>
+                    <div className='add_number_but' onClick={() => isEnough()}>Добавить номер</div>
                 </div>}
         </div>
 }
