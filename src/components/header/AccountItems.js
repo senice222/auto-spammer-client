@@ -19,11 +19,10 @@ const AccountItems = ({user_data, setSwitchMenu, switchMenu, signIn, signUp}) =>
         const refreshToken = localStorage.getItem('refresh');
         try {
             const response = await $api.delete(`/logout`, { refresh_token: refreshToken });
-
+            console.log(response)
             if (response.status === 200) {
                 localStorage.clear();
                 dispatch({ type: LOGOUT });
-                navigate('/#/');
             } else {
                 console.error('Logout failed');
             }

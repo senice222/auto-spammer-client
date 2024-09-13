@@ -14,7 +14,7 @@ const NumbersList = ({ numbers }) => {
         setUpdatedNumbers([newNumber, ...updatedNumbers]);
     }
     console.log(numbers)
-    console.log(current_number_id)
+    console.log(current_number_id, 22211)
     useEffect(() => {
         const currentIndex = updatedNumbers.findIndex(n => n.phone === current_number_id);
         let start = Math.max(0, currentIndex - 2);

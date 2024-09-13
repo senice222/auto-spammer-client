@@ -12,6 +12,7 @@ const NumberTab = ({ id, current_number_id, number }) => {
 
     const selectNumber = () => GetFirstPhone(user_data.id, id).then(data => {
         localStorage.setItem('current_tab', id)
+        // localStorage.setItem('current_number_id', )
         dispatch({ type: SET_NUMBER_DATA, payload: data })
         notification.success({
             message: 'Вы успешно выбрали номер телефона.',

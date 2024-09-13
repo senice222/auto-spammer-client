@@ -10,8 +10,7 @@ const DeleteNumber = () => {
     const user_data = useSelector(n => n.app.user_data)
 
     const deleteNumberHandler = async () => {
-        console.log(user_data.id, number_data.id, number_data.number)
-        await DeleteNumberQuery(user_data.id, number_data.id, number_data.number).then(data => {
+        await DeleteNumberQuery(user_data.id, localStorage.getItem('current_tab'), number_data.number).then(data => {
             localStorage.removeItem("current_tab")
             dispatch({ type: DELETE_FROM_NUMBER_LIST, payload: number_data.id })
             dispatch({ type: DELETE_NUMBER })
